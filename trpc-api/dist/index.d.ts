@@ -1,11 +1,11 @@
-import { z } from "zod";
-import * as superjson from "superjson";
-import * as _trpc_server from "@trpc/server";
-import * as express from "express";
-import * as qs from "qs";
-import * as express_serve_static_core from "express-serve-static-core";
+import { z } from 'zod';
+import * as superjson from 'superjson';
+import * as _trpc_server from '@trpc/server';
+import * as express from 'express';
+import * as qs from 'qs';
+import * as express_serve_static_core from 'express-serve-static-core';
 
-declare const STRATEGY_NAMES: readonly ["SMA", "CustomStrategy"];
+declare const STRATEGY_NAMES: readonly ['SMA', 'CustomStrategy'];
 type StrategyName = (typeof STRATEGY_NAMES)[number];
 
 type Kline = {
@@ -15,18 +15,18 @@ type Kline = {
 };
 type Klines = Array<Kline>;
 
-declare const KLINE_INTERVALS: readonly ["1s", "1m", "1h", "1d", "1w", "1M"];
+declare const KLINE_INTERVALS: readonly ['1s', '1m', '1h', '1d', '1w', '1M'];
 /**
  * Supported kline intervals.
  */
 type KlineInterval = (typeof KLINE_INTERVALS)[number];
 
-type PositionType = "long" | "short";
+type PositionType = 'long' | 'short';
 type PositionNeutral = {
-  status: "neutral";
+  status: 'neutral';
 };
 type PositionOpen = {
-  status: "open";
+  status: 'open';
   positionType: PositionType;
   entryOrderType: OrderType;
   entryTime: number;
@@ -34,7 +34,7 @@ type PositionOpen = {
   entryQuantity: number;
 };
 type PositionClosed = {
-  status: "closed";
+  status: 'closed';
   positionType: PositionType;
   entryOrderType: OrderType;
   entryTime: number;
@@ -48,22 +48,14 @@ type PositionClosed = {
   roiRelative: number;
 };
 type Position = PositionNeutral | PositionOpen | PositionClosed;
-declare const ORDER_TYPE: readonly ["MARKET", "LIMIT"];
+declare const ORDER_TYPE: readonly ['MARKET', 'LIMIT'];
 type OrderType = (typeof ORDER_TYPE)[number];
 
-declare const SYMBOL_COINS: readonly [
-  "BUSD",
-  "USDT",
-  "BTC",
-  "ETH",
-  "SOL",
-  "AVAX",
-  "MATIC"
-];
+declare const SYMBOL_COINS: readonly ['BUSD', 'USDT', 'BTC', 'ETH', 'SOL', 'AVAX', 'MATIC'];
 type SymbolCoin = (typeof SYMBOL_COINS)[number];
 type SymbolCoins = ReadonlyArray<SymbolCoin>;
 
-declare const SYMBOL_PAIRS: readonly ["AVAXBUSD", "MATICBUSD"];
+declare const SYMBOL_PAIRS: readonly ['AVAXBUSD', 'MATICBUSD'];
 type SymbolPair = (typeof SYMBOL_PAIRS)[number];
 type SymbolPairs = ReadonlyArray<SymbolPair>;
 
@@ -77,7 +69,7 @@ type Trades = Array<Trade>;
 
 declare const StrategyConfigSchema: z.ZodObject<
   {
-    symbolPair: z.ZodEnum<["AVAXBUSD", "MATICBUSD"]>;
+    symbolPair: z.ZodEnum<['AVAXBUSD', 'MATICBUSD']>;
     /**
      *  Open position with relative entry amount of your balance.
      */
@@ -87,15 +79,15 @@ declare const StrategyConfigSchema: z.ZodObject<
      */
     assetDecimalPlaces: z.ZodNumber;
   },
-  "strip",
+  'strip',
   z.ZodTypeAny,
   {
-    symbolPair: "AVAXBUSD" | "MATICBUSD";
+    symbolPair: 'AVAXBUSD' | 'MATICBUSD';
     entryAmountRelative: number;
     assetDecimalPlaces: number;
   },
   {
-    symbolPair: "AVAXBUSD" | "MATICBUSD";
+    symbolPair: 'AVAXBUSD' | 'MATICBUSD';
     entryAmountRelative: number;
     assetDecimalPlaces: number;
   }
@@ -137,21 +129,13 @@ declare abstract class Strategy {
   set balance_BUSD(value: number);
   update({ newTrade }: { newTrade: Trade }): void;
   abstract searchSignalPositionOpen(): SearchSignalPositionOpenReturn;
-  abstract searchSignalPositionClose(
-    params: SearchSignalPositionCloseParams
-  ): SearchSignalPositionCloseReturn;
+  abstract searchSignalPositionClose(params: SearchSignalPositionCloseParams): SearchSignalPositionCloseReturn;
 }
 
 declare const appRouter: _trpc_server.CreateRouterInner<
   _trpc_server.RootConfig<{
     ctx: {
-      req: express.Request<
-        express_serve_static_core.ParamsDictionary,
-        any,
-        any,
-        qs.ParsedQs,
-        Record<string, any>
-      >;
+      req: express.Request<express_serve_static_core.ParamsDictionary, any, any, qs.ParsedQs, Record<string, any>>;
       res: express.Response<any, Record<string, any>>;
     };
     meta: object;
@@ -162,13 +146,7 @@ declare const appRouter: _trpc_server.CreateRouterInner<
     bot: _trpc_server.CreateRouterInner<
       _trpc_server.RootConfig<{
         ctx: {
-          req: express.Request<
-            express_serve_static_core.ParamsDictionary,
-            any,
-            any,
-            qs.ParsedQs,
-            Record<string, any>
-          >;
+          req: express.Request<express_serve_static_core.ParamsDictionary, any, any, qs.ParsedQs, Record<string, any>>;
           res: express.Response<any, Record<string, any>>;
         };
         meta: object;
@@ -194,7 +172,7 @@ declare const appRouter: _trpc_server.CreateRouterInner<
           }>,
           {
             run: _trpc_server.BuildProcedure<
-              "mutation",
+              'mutation',
               {
                 _config: _trpc_server.RootConfig<{
                   ctx: {
@@ -226,11 +204,11 @@ declare const appRouter: _trpc_server.CreateRouterInner<
                   botConfig:
                     | {
                         strategyConfig: {
-                          symbolPair: "AVAXBUSD" | "MATICBUSD";
+                          symbolPair: 'AVAXBUSD' | 'MATICBUSD';
                           entryAmountRelative: number;
                           assetDecimalPlaces: number;
                         };
-                        strategyName: "SMA";
+                        strategyName: 'SMA';
                         strategySpecificConfig: {
                           periodShort: number;
                           periodLong: number;
@@ -238,11 +216,11 @@ declare const appRouter: _trpc_server.CreateRouterInner<
                       }
                     | {
                         strategyConfig: {
-                          symbolPair: "AVAXBUSD" | "MATICBUSD";
+                          symbolPair: 'AVAXBUSD' | 'MATICBUSD';
                           entryAmountRelative: number;
                           assetDecimalPlaces: number;
                         };
-                        strategyName: "CustomStrategy";
+                        strategyName: 'CustomStrategy';
                         strategySpecificConfig: {
                           periodShort: number;
                           periodLong: number;
@@ -254,11 +232,11 @@ declare const appRouter: _trpc_server.CreateRouterInner<
                   botConfig:
                     | {
                         strategyConfig: {
-                          symbolPair: "AVAXBUSD" | "MATICBUSD";
+                          symbolPair: 'AVAXBUSD' | 'MATICBUSD';
                           entryAmountRelative: number;
                           assetDecimalPlaces: number;
                         };
-                        strategyName: "SMA";
+                        strategyName: 'SMA';
                         strategySpecificConfig: {
                           periodShort: number;
                           periodLong: number;
@@ -266,11 +244,11 @@ declare const appRouter: _trpc_server.CreateRouterInner<
                       }
                     | {
                         strategyConfig: {
-                          symbolPair: "AVAXBUSD" | "MATICBUSD";
+                          symbolPair: 'AVAXBUSD' | 'MATICBUSD';
                           entryAmountRelative: number;
                           assetDecimalPlaces: number;
                         };
-                        strategyName: "CustomStrategy";
+                        strategyName: 'CustomStrategy';
                         strategySpecificConfig: {
                           periodShort: number;
                           periodLong: number;
@@ -284,7 +262,7 @@ declare const appRouter: _trpc_server.CreateRouterInner<
               void
             >;
             stop: _trpc_server.BuildProcedure<
-              "mutation",
+              'mutation',
               {
                 _config: _trpc_server.RootConfig<{
                   ctx: {
@@ -324,7 +302,7 @@ declare const appRouter: _trpc_server.CreateRouterInner<
               void
             >;
             status: _trpc_server.BuildProcedure<
-              "mutation",
+              'mutation',
               {
                 _config: _trpc_server.RootConfig<{
                   ctx: {
@@ -362,12 +340,7 @@ declare const appRouter: _trpc_server.CreateRouterInner<
                 _output_out: typeof _trpc_server.unsetMarker;
               },
               | {
-                  botFsm:
-                    | "idle"
-                    | "initializing"
-                    | "initialized"
-                    | "running"
-                    | "stopping";
+                  botFsm: 'idle' | 'initializing' | 'initialized' | 'running' | 'stopping';
                   position: Position;
                   strategy: Strategy | undefined;
                 }
@@ -393,7 +366,7 @@ declare const appRouter: _trpc_server.CreateRouterInner<
           }>,
           {
             destroy: _trpc_server.BuildProcedure<
-              "mutation",
+              'mutation',
               {
                 _config: _trpc_server.RootConfig<{
                   ctx: {
@@ -433,7 +406,7 @@ declare const appRouter: _trpc_server.CreateRouterInner<
               void
             >;
             list: _trpc_server.BuildProcedure<
-              "query",
+              'query',
               {
                 _config: _trpc_server.RootConfig<{
                   ctx: {
@@ -469,11 +442,11 @@ declare const appRouter: _trpc_server.CreateRouterInner<
               ((
                 | {
                     strategyConfig: {
-                      symbolPair: "AVAXBUSD" | "MATICBUSD";
+                      symbolPair: 'AVAXBUSD' | 'MATICBUSD';
                       entryAmountRelative: number;
                       assetDecimalPlaces: number;
                     };
-                    strategyName: "SMA";
+                    strategyName: 'SMA';
                     strategySpecificConfig: {
                       periodShort: number;
                       periodLong: number;
@@ -481,11 +454,11 @@ declare const appRouter: _trpc_server.CreateRouterInner<
                   }
                 | {
                     strategyConfig: {
-                      symbolPair: "AVAXBUSD" | "MATICBUSD";
+                      symbolPair: 'AVAXBUSD' | 'MATICBUSD';
                       entryAmountRelative: number;
                       assetDecimalPlaces: number;
                     };
-                    strategyName: "CustomStrategy";
+                    strategyName: 'CustomStrategy';
                     strategySpecificConfig: {
                       periodShort: number;
                       periodLong: number;
@@ -498,7 +471,7 @@ declare const appRouter: _trpc_server.CreateRouterInner<
               })[]
             >;
             upsert: _trpc_server.BuildProcedure<
-              "mutation",
+              'mutation',
               {
                 _config: _trpc_server.RootConfig<{
                   ctx: {
@@ -529,11 +502,11 @@ declare const appRouter: _trpc_server.CreateRouterInner<
                 _input_in: (
                   | {
                       strategyConfig: {
-                        symbolPair: "AVAXBUSD" | "MATICBUSD";
+                        symbolPair: 'AVAXBUSD' | 'MATICBUSD';
                         entryAmountRelative: number;
                         assetDecimalPlaces: number;
                       };
-                      strategyName: "SMA";
+                      strategyName: 'SMA';
                       strategySpecificConfig: {
                         periodShort: number;
                         periodLong: number;
@@ -541,11 +514,11 @@ declare const appRouter: _trpc_server.CreateRouterInner<
                     }
                   | {
                       strategyConfig: {
-                        symbolPair: "AVAXBUSD" | "MATICBUSD";
+                        symbolPair: 'AVAXBUSD' | 'MATICBUSD';
                         entryAmountRelative: number;
                         assetDecimalPlaces: number;
                       };
-                      strategyName: "CustomStrategy";
+                      strategyName: 'CustomStrategy';
                       strategySpecificConfig: {
                         periodShort: number;
                         periodLong: number;
@@ -559,11 +532,11 @@ declare const appRouter: _trpc_server.CreateRouterInner<
                 _input_out: (
                   | {
                       strategyConfig: {
-                        symbolPair: "AVAXBUSD" | "MATICBUSD";
+                        symbolPair: 'AVAXBUSD' | 'MATICBUSD';
                         entryAmountRelative: number;
                         assetDecimalPlaces: number;
                       };
-                      strategyName: "SMA";
+                      strategyName: 'SMA';
                       strategySpecificConfig: {
                         periodShort: number;
                         periodLong: number;
@@ -571,11 +544,11 @@ declare const appRouter: _trpc_server.CreateRouterInner<
                     }
                   | {
                       strategyConfig: {
-                        symbolPair: "AVAXBUSD" | "MATICBUSD";
+                        symbolPair: 'AVAXBUSD' | 'MATICBUSD';
                         entryAmountRelative: number;
                         assetDecimalPlaces: number;
                       };
-                      strategyName: "CustomStrategy";
+                      strategyName: 'CustomStrategy';
                       strategySpecificConfig: {
                         periodShort: number;
                         periodLong: number;
@@ -598,13 +571,7 @@ declare const appRouter: _trpc_server.CreateRouterInner<
     botBacktest: _trpc_server.CreateRouterInner<
       _trpc_server.RootConfig<{
         ctx: {
-          req: express.Request<
-            express_serve_static_core.ParamsDictionary,
-            any,
-            any,
-            qs.ParsedQs,
-            Record<string, any>
-          >;
+          req: express.Request<express_serve_static_core.ParamsDictionary, any, any, qs.ParsedQs, Record<string, any>>;
           res: express.Response<any, Record<string, any>>;
         };
         meta: object;
@@ -630,7 +597,7 @@ declare const appRouter: _trpc_server.CreateRouterInner<
           }>,
           {
             run: _trpc_server.BuildProcedure<
-              "mutation",
+              'mutation',
               {
                 _config: _trpc_server.RootConfig<{
                   ctx: {
@@ -662,11 +629,11 @@ declare const appRouter: _trpc_server.CreateRouterInner<
                   botBacktestConfig:
                     | ({
                         strategyConfig: {
-                          symbolPair: "AVAXBUSD" | "MATICBUSD";
+                          symbolPair: 'AVAXBUSD' | 'MATICBUSD';
                           entryAmountRelative: number;
                           assetDecimalPlaces: number;
                         };
-                        strategyName: "SMA";
+                        strategyName: 'SMA';
                         strategySpecificConfig: {
                           periodShort: number;
                           periodLong: number;
@@ -681,11 +648,11 @@ declare const appRouter: _trpc_server.CreateRouterInner<
                       })
                     | ({
                         strategyConfig: {
-                          symbolPair: "AVAXBUSD" | "MATICBUSD";
+                          symbolPair: 'AVAXBUSD' | 'MATICBUSD';
                           entryAmountRelative: number;
                           assetDecimalPlaces: number;
                         };
-                        strategyName: "CustomStrategy";
+                        strategyName: 'CustomStrategy';
                         strategySpecificConfig: {
                           periodShort: number;
                           periodLong: number;
@@ -705,11 +672,11 @@ declare const appRouter: _trpc_server.CreateRouterInner<
                   botBacktestConfig:
                     | ({
                         strategyConfig: {
-                          symbolPair: "AVAXBUSD" | "MATICBUSD";
+                          symbolPair: 'AVAXBUSD' | 'MATICBUSD';
                           entryAmountRelative: number;
                           assetDecimalPlaces: number;
                         };
-                        strategyName: "SMA";
+                        strategyName: 'SMA';
                         strategySpecificConfig: {
                           periodShort: number;
                           periodLong: number;
@@ -724,11 +691,11 @@ declare const appRouter: _trpc_server.CreateRouterInner<
                       })
                     | ({
                         strategyConfig: {
-                          symbolPair: "AVAXBUSD" | "MATICBUSD";
+                          symbolPair: 'AVAXBUSD' | 'MATICBUSD';
                           entryAmountRelative: number;
                           assetDecimalPlaces: number;
                         };
-                        strategyName: "CustomStrategy";
+                        strategyName: 'CustomStrategy';
                         strategySpecificConfig: {
                           periodShort: number;
                           periodLong: number;
@@ -750,8 +717,8 @@ declare const appRouter: _trpc_server.CreateRouterInner<
               {
                 readonly stats: {
                   readonly strategyConfig: {
-                    readonly name: "SMA" | "CustomStrategy";
-                    readonly symbolPair: "AVAXBUSD" | "MATICBUSD";
+                    readonly name: 'SMA' | 'CustomStrategy';
+                    readonly symbolPair: 'AVAXBUSD' | 'MATICBUSD';
                     readonly entryAmountRelative: `${number}%`;
                   };
                   readonly botExecutionTime: {
@@ -824,7 +791,7 @@ declare const appRouter: _trpc_server.CreateRouterInner<
           }>,
           {
             destroy: _trpc_server.BuildProcedure<
-              "mutation",
+              'mutation',
               {
                 _config: _trpc_server.RootConfig<{
                   ctx: {
@@ -864,7 +831,7 @@ declare const appRouter: _trpc_server.CreateRouterInner<
               void
             >;
             list: _trpc_server.BuildProcedure<
-              "query",
+              'query',
               {
                 _config: _trpc_server.RootConfig<{
                   ctx: {
@@ -900,11 +867,11 @@ declare const appRouter: _trpc_server.CreateRouterInner<
               (((
                 | {
                     strategyConfig: {
-                      symbolPair: "AVAXBUSD" | "MATICBUSD";
+                      symbolPair: 'AVAXBUSD' | 'MATICBUSD';
                       entryAmountRelative: number;
                       assetDecimalPlaces: number;
                     };
-                    strategyName: "SMA";
+                    strategyName: 'SMA';
                     strategySpecificConfig: {
                       periodShort: number;
                       periodLong: number;
@@ -912,11 +879,11 @@ declare const appRouter: _trpc_server.CreateRouterInner<
                   }
                 | {
                     strategyConfig: {
-                      symbolPair: "AVAXBUSD" | "MATICBUSD";
+                      symbolPair: 'AVAXBUSD' | 'MATICBUSD';
                       entryAmountRelative: number;
                       assetDecimalPlaces: number;
                     };
-                    strategyName: "CustomStrategy";
+                    strategyName: 'CustomStrategy';
                     strategySpecificConfig: {
                       periodShort: number;
                       periodLong: number;
@@ -936,7 +903,7 @@ declare const appRouter: _trpc_server.CreateRouterInner<
               })[]
             >;
             upsert: _trpc_server.BuildProcedure<
-              "mutation",
+              'mutation',
               {
                 _config: _trpc_server.RootConfig<{
                   ctx: {
@@ -967,11 +934,11 @@ declare const appRouter: _trpc_server.CreateRouterInner<
                 _input_in: ((
                   | {
                       strategyConfig: {
-                        symbolPair: "AVAXBUSD" | "MATICBUSD";
+                        symbolPair: 'AVAXBUSD' | 'MATICBUSD';
                         entryAmountRelative: number;
                         assetDecimalPlaces: number;
                       };
-                      strategyName: "SMA";
+                      strategyName: 'SMA';
                       strategySpecificConfig: {
                         periodShort: number;
                         periodLong: number;
@@ -979,11 +946,11 @@ declare const appRouter: _trpc_server.CreateRouterInner<
                     }
                   | {
                       strategyConfig: {
-                        symbolPair: "AVAXBUSD" | "MATICBUSD";
+                        symbolPair: 'AVAXBUSD' | 'MATICBUSD';
                         entryAmountRelative: number;
                         assetDecimalPlaces: number;
                       };
-                      strategyName: "CustomStrategy";
+                      strategyName: 'CustomStrategy';
                       strategySpecificConfig: {
                         periodShort: number;
                         periodLong: number;
@@ -1004,11 +971,11 @@ declare const appRouter: _trpc_server.CreateRouterInner<
                 _input_out: ((
                   | {
                       strategyConfig: {
-                        symbolPair: "AVAXBUSD" | "MATICBUSD";
+                        symbolPair: 'AVAXBUSD' | 'MATICBUSD';
                         entryAmountRelative: number;
                         assetDecimalPlaces: number;
                       };
-                      strategyName: "SMA";
+                      strategyName: 'SMA';
                       strategySpecificConfig: {
                         periodShort: number;
                         periodLong: number;
@@ -1016,11 +983,11 @@ declare const appRouter: _trpc_server.CreateRouterInner<
                     }
                   | {
                       strategyConfig: {
-                        symbolPair: "AVAXBUSD" | "MATICBUSD";
+                        symbolPair: 'AVAXBUSD' | 'MATICBUSD';
                         entryAmountRelative: number;
                         assetDecimalPlaces: number;
                       };
-                      strategyName: "CustomStrategy";
+                      strategyName: 'CustomStrategy';
                       strategySpecificConfig: {
                         periodShort: number;
                         periodLong: number;
@@ -1050,13 +1017,7 @@ declare const appRouter: _trpc_server.CreateRouterInner<
     logs: _trpc_server.CreateRouterInner<
       _trpc_server.RootConfig<{
         ctx: {
-          req: express.Request<
-            express_serve_static_core.ParamsDictionary,
-            any,
-            any,
-            qs.ParsedQs,
-            Record<string, any>
-          >;
+          req: express.Request<express_serve_static_core.ParamsDictionary, any, any, qs.ParsedQs, Record<string, any>>;
           res: express.Response<any, Record<string, any>>;
         };
         meta: object;
@@ -1065,7 +1026,7 @@ declare const appRouter: _trpc_server.CreateRouterInner<
       }>,
       {
         triggerAll: _trpc_server.BuildProcedure<
-          "query",
+          'query',
           {
             _config: _trpc_server.RootConfig<{
               ctx: {
@@ -1101,7 +1062,7 @@ declare const appRouter: _trpc_server.CreateRouterInner<
           string
         >;
         destroy: _trpc_server.BuildProcedure<
-          "query",
+          'query',
           {
             _config: _trpc_server.RootConfig<{
               ctx: {
@@ -1137,7 +1098,7 @@ declare const appRouter: _trpc_server.CreateRouterInner<
           string | undefined
         >;
         show: _trpc_server.BuildProcedure<
-          "query",
+          'query',
           {
             _config: _trpc_server.RootConfig<{
               ctx: {
@@ -1166,11 +1127,11 @@ declare const appRouter: _trpc_server.CreateRouterInner<
               res: express.Response<any, Record<string, any>>;
             };
             _input_in: {
-              logType: "error" | "all";
+              logType: 'error' | 'all';
               logDate?: string | undefined;
             };
             _input_out: {
-              logType: "error" | "all";
+              logType: 'error' | 'all';
               logDate?: string | undefined;
             };
             _output_in: typeof _trpc_server.unsetMarker;
@@ -1178,7 +1139,7 @@ declare const appRouter: _trpc_server.CreateRouterInner<
           },
           {
             data: {
-              logType: "error" | "all";
+              logType: 'error' | 'all';
               logDate?: string | undefined;
             };
           }
@@ -1207,26 +1168,26 @@ declare const FEE_RATE_BORROW: {
 };
 
 declare const BotConfigSchema: z.ZodDiscriminatedUnion<
-  "strategyName",
+  'strategyName',
   [
     z.ZodObject<
       {
-        strategyName: z.ZodLiteral<"SMA">;
+        strategyName: z.ZodLiteral<'SMA'>;
         strategyConfig: z.ZodObject<
           {
-            symbolPair: z.ZodEnum<["AVAXBUSD", "MATICBUSD"]>;
+            symbolPair: z.ZodEnum<['AVAXBUSD', 'MATICBUSD']>;
             entryAmountRelative: z.ZodNumber;
             assetDecimalPlaces: z.ZodNumber;
           },
-          "strip",
+          'strip',
           z.ZodTypeAny,
           {
-            symbolPair: "AVAXBUSD" | "MATICBUSD";
+            symbolPair: 'AVAXBUSD' | 'MATICBUSD';
             entryAmountRelative: number;
             assetDecimalPlaces: number;
           },
           {
-            symbolPair: "AVAXBUSD" | "MATICBUSD";
+            symbolPair: 'AVAXBUSD' | 'MATICBUSD';
             entryAmountRelative: number;
             assetDecimalPlaces: number;
           }
@@ -1236,7 +1197,7 @@ declare const BotConfigSchema: z.ZodDiscriminatedUnion<
             periodShort: z.ZodNumber;
             periodLong: z.ZodNumber;
           },
-          "strip",
+          'strip',
           z.ZodTypeAny,
           {
             periodShort: number;
@@ -1248,15 +1209,15 @@ declare const BotConfigSchema: z.ZodDiscriminatedUnion<
           }
         >;
       },
-      "strip",
+      'strip',
       z.ZodTypeAny,
       {
         strategyConfig: {
-          symbolPair: "AVAXBUSD" | "MATICBUSD";
+          symbolPair: 'AVAXBUSD' | 'MATICBUSD';
           entryAmountRelative: number;
           assetDecimalPlaces: number;
         };
-        strategyName: "SMA";
+        strategyName: 'SMA';
         strategySpecificConfig: {
           periodShort: number;
           periodLong: number;
@@ -1264,11 +1225,11 @@ declare const BotConfigSchema: z.ZodDiscriminatedUnion<
       },
       {
         strategyConfig: {
-          symbolPair: "AVAXBUSD" | "MATICBUSD";
+          symbolPair: 'AVAXBUSD' | 'MATICBUSD';
           entryAmountRelative: number;
           assetDecimalPlaces: number;
         };
-        strategyName: "SMA";
+        strategyName: 'SMA';
         strategySpecificConfig: {
           periodShort: number;
           periodLong: number;
@@ -1277,22 +1238,22 @@ declare const BotConfigSchema: z.ZodDiscriminatedUnion<
     >,
     z.ZodObject<
       {
-        strategyName: z.ZodLiteral<"CustomStrategy">;
+        strategyName: z.ZodLiteral<'CustomStrategy'>;
         strategyConfig: z.ZodObject<
           {
-            symbolPair: z.ZodEnum<["AVAXBUSD", "MATICBUSD"]>;
+            symbolPair: z.ZodEnum<['AVAXBUSD', 'MATICBUSD']>;
             entryAmountRelative: z.ZodNumber;
             assetDecimalPlaces: z.ZodNumber;
           },
-          "strip",
+          'strip',
           z.ZodTypeAny,
           {
-            symbolPair: "AVAXBUSD" | "MATICBUSD";
+            symbolPair: 'AVAXBUSD' | 'MATICBUSD';
             entryAmountRelative: number;
             assetDecimalPlaces: number;
           },
           {
-            symbolPair: "AVAXBUSD" | "MATICBUSD";
+            symbolPair: 'AVAXBUSD' | 'MATICBUSD';
             entryAmountRelative: number;
             assetDecimalPlaces: number;
           }
@@ -1303,7 +1264,7 @@ declare const BotConfigSchema: z.ZodDiscriminatedUnion<
             periodShort: z.ZodNumber;
             periodLong: z.ZodNumber;
           },
-          "strip",
+          'strip',
           z.ZodTypeAny,
           {
             periodShort: number;
@@ -1317,15 +1278,15 @@ declare const BotConfigSchema: z.ZodDiscriminatedUnion<
           }
         >;
       },
-      "strip",
+      'strip',
       z.ZodTypeAny,
       {
         strategyConfig: {
-          symbolPair: "AVAXBUSD" | "MATICBUSD";
+          symbolPair: 'AVAXBUSD' | 'MATICBUSD';
           entryAmountRelative: number;
           assetDecimalPlaces: number;
         };
-        strategyName: "CustomStrategy";
+        strategyName: 'CustomStrategy';
         strategySpecificConfig: {
           periodShort: number;
           periodLong: number;
@@ -1334,42 +1295,42 @@ declare const BotConfigSchema: z.ZodDiscriminatedUnion<
       },
       {
         strategyConfig: {
-          symbolPair: "AVAXBUSD" | "MATICBUSD";
+          symbolPair: 'AVAXBUSD' | 'MATICBUSD';
           entryAmountRelative: number;
           assetDecimalPlaces: number;
         };
-        strategyName: "CustomStrategy";
+        strategyName: 'CustomStrategy';
         strategySpecificConfig: {
           periodShort: number;
           periodLong: number;
           customStrategyParam: string;
         };
       }
-    >
+    >,
   ]
 >;
 declare const BotInstanceSchema: z.ZodIntersection<
   z.ZodDiscriminatedUnion<
-    "strategyName",
+    'strategyName',
     [
       z.ZodObject<
         {
-          strategyName: z.ZodLiteral<"SMA">;
+          strategyName: z.ZodLiteral<'SMA'>;
           strategyConfig: z.ZodObject<
             {
-              symbolPair: z.ZodEnum<["AVAXBUSD", "MATICBUSD"]>;
+              symbolPair: z.ZodEnum<['AVAXBUSD', 'MATICBUSD']>;
               entryAmountRelative: z.ZodNumber;
               assetDecimalPlaces: z.ZodNumber;
             },
-            "strip",
+            'strip',
             z.ZodTypeAny,
             {
-              symbolPair: "AVAXBUSD" | "MATICBUSD";
+              symbolPair: 'AVAXBUSD' | 'MATICBUSD';
               entryAmountRelative: number;
               assetDecimalPlaces: number;
             },
             {
-              symbolPair: "AVAXBUSD" | "MATICBUSD";
+              symbolPair: 'AVAXBUSD' | 'MATICBUSD';
               entryAmountRelative: number;
               assetDecimalPlaces: number;
             }
@@ -1379,7 +1340,7 @@ declare const BotInstanceSchema: z.ZodIntersection<
               periodShort: z.ZodNumber;
               periodLong: z.ZodNumber;
             },
-            "strip",
+            'strip',
             z.ZodTypeAny,
             {
               periodShort: number;
@@ -1391,15 +1352,15 @@ declare const BotInstanceSchema: z.ZodIntersection<
             }
           >;
         },
-        "strip",
+        'strip',
         z.ZodTypeAny,
         {
           strategyConfig: {
-            symbolPair: "AVAXBUSD" | "MATICBUSD";
+            symbolPair: 'AVAXBUSD' | 'MATICBUSD';
             entryAmountRelative: number;
             assetDecimalPlaces: number;
           };
-          strategyName: "SMA";
+          strategyName: 'SMA';
           strategySpecificConfig: {
             periodShort: number;
             periodLong: number;
@@ -1407,11 +1368,11 @@ declare const BotInstanceSchema: z.ZodIntersection<
         },
         {
           strategyConfig: {
-            symbolPair: "AVAXBUSD" | "MATICBUSD";
+            symbolPair: 'AVAXBUSD' | 'MATICBUSD';
             entryAmountRelative: number;
             assetDecimalPlaces: number;
           };
-          strategyName: "SMA";
+          strategyName: 'SMA';
           strategySpecificConfig: {
             periodShort: number;
             periodLong: number;
@@ -1420,22 +1381,22 @@ declare const BotInstanceSchema: z.ZodIntersection<
       >,
       z.ZodObject<
         {
-          strategyName: z.ZodLiteral<"CustomStrategy">;
+          strategyName: z.ZodLiteral<'CustomStrategy'>;
           strategyConfig: z.ZodObject<
             {
-              symbolPair: z.ZodEnum<["AVAXBUSD", "MATICBUSD"]>;
+              symbolPair: z.ZodEnum<['AVAXBUSD', 'MATICBUSD']>;
               entryAmountRelative: z.ZodNumber;
               assetDecimalPlaces: z.ZodNumber;
             },
-            "strip",
+            'strip',
             z.ZodTypeAny,
             {
-              symbolPair: "AVAXBUSD" | "MATICBUSD";
+              symbolPair: 'AVAXBUSD' | 'MATICBUSD';
               entryAmountRelative: number;
               assetDecimalPlaces: number;
             },
             {
-              symbolPair: "AVAXBUSD" | "MATICBUSD";
+              symbolPair: 'AVAXBUSD' | 'MATICBUSD';
               entryAmountRelative: number;
               assetDecimalPlaces: number;
             }
@@ -1446,7 +1407,7 @@ declare const BotInstanceSchema: z.ZodIntersection<
               periodShort: z.ZodNumber;
               periodLong: z.ZodNumber;
             },
-            "strip",
+            'strip',
             z.ZodTypeAny,
             {
               periodShort: number;
@@ -1460,15 +1421,15 @@ declare const BotInstanceSchema: z.ZodIntersection<
             }
           >;
         },
-        "strip",
+        'strip',
         z.ZodTypeAny,
         {
           strategyConfig: {
-            symbolPair: "AVAXBUSD" | "MATICBUSD";
+            symbolPair: 'AVAXBUSD' | 'MATICBUSD';
             entryAmountRelative: number;
             assetDecimalPlaces: number;
           };
-          strategyName: "CustomStrategy";
+          strategyName: 'CustomStrategy';
           strategySpecificConfig: {
             periodShort: number;
             periodLong: number;
@@ -1477,18 +1438,18 @@ declare const BotInstanceSchema: z.ZodIntersection<
         },
         {
           strategyConfig: {
-            symbolPair: "AVAXBUSD" | "MATICBUSD";
+            symbolPair: 'AVAXBUSD' | 'MATICBUSD';
             entryAmountRelative: number;
             assetDecimalPlaces: number;
           };
-          strategyName: "CustomStrategy";
+          strategyName: 'CustomStrategy';
           strategySpecificConfig: {
             periodShort: number;
             periodLong: number;
             customStrategyParam: string;
           };
         }
-      >
+      >,
     ]
   >,
   z.ZodObject<
@@ -1496,7 +1457,7 @@ declare const BotInstanceSchema: z.ZodIntersection<
       name: z.ZodString;
       description: z.ZodString;
     },
-    "strip",
+    'strip',
     z.ZodTypeAny,
     {
       name: string;
@@ -1511,26 +1472,26 @@ declare const BotInstanceSchema: z.ZodIntersection<
 
 declare const BotBacktestConfigSchema: z.ZodIntersection<
   z.ZodDiscriminatedUnion<
-    "strategyName",
+    'strategyName',
     [
       z.ZodObject<
         {
-          strategyName: z.ZodLiteral<"SMA">;
+          strategyName: z.ZodLiteral<'SMA'>;
           strategyConfig: z.ZodObject<
             {
-              symbolPair: z.ZodEnum<["AVAXBUSD", "MATICBUSD"]>;
+              symbolPair: z.ZodEnum<['AVAXBUSD', 'MATICBUSD']>;
               entryAmountRelative: z.ZodNumber;
               assetDecimalPlaces: z.ZodNumber;
             },
-            "strip",
+            'strip',
             z.ZodTypeAny,
             {
-              symbolPair: "AVAXBUSD" | "MATICBUSD";
+              symbolPair: 'AVAXBUSD' | 'MATICBUSD';
               entryAmountRelative: number;
               assetDecimalPlaces: number;
             },
             {
-              symbolPair: "AVAXBUSD" | "MATICBUSD";
+              symbolPair: 'AVAXBUSD' | 'MATICBUSD';
               entryAmountRelative: number;
               assetDecimalPlaces: number;
             }
@@ -1540,7 +1501,7 @@ declare const BotBacktestConfigSchema: z.ZodIntersection<
               periodShort: z.ZodNumber;
               periodLong: z.ZodNumber;
             },
-            "strip",
+            'strip',
             z.ZodTypeAny,
             {
               periodShort: number;
@@ -1552,15 +1513,15 @@ declare const BotBacktestConfigSchema: z.ZodIntersection<
             }
           >;
         },
-        "strip",
+        'strip',
         z.ZodTypeAny,
         {
           strategyConfig: {
-            symbolPair: "AVAXBUSD" | "MATICBUSD";
+            symbolPair: 'AVAXBUSD' | 'MATICBUSD';
             entryAmountRelative: number;
             assetDecimalPlaces: number;
           };
-          strategyName: "SMA";
+          strategyName: 'SMA';
           strategySpecificConfig: {
             periodShort: number;
             periodLong: number;
@@ -1568,11 +1529,11 @@ declare const BotBacktestConfigSchema: z.ZodIntersection<
         },
         {
           strategyConfig: {
-            symbolPair: "AVAXBUSD" | "MATICBUSD";
+            symbolPair: 'AVAXBUSD' | 'MATICBUSD';
             entryAmountRelative: number;
             assetDecimalPlaces: number;
           };
-          strategyName: "SMA";
+          strategyName: 'SMA';
           strategySpecificConfig: {
             periodShort: number;
             periodLong: number;
@@ -1581,22 +1542,22 @@ declare const BotBacktestConfigSchema: z.ZodIntersection<
       >,
       z.ZodObject<
         {
-          strategyName: z.ZodLiteral<"CustomStrategy">;
+          strategyName: z.ZodLiteral<'CustomStrategy'>;
           strategyConfig: z.ZodObject<
             {
-              symbolPair: z.ZodEnum<["AVAXBUSD", "MATICBUSD"]>;
+              symbolPair: z.ZodEnum<['AVAXBUSD', 'MATICBUSD']>;
               entryAmountRelative: z.ZodNumber;
               assetDecimalPlaces: z.ZodNumber;
             },
-            "strip",
+            'strip',
             z.ZodTypeAny,
             {
-              symbolPair: "AVAXBUSD" | "MATICBUSD";
+              symbolPair: 'AVAXBUSD' | 'MATICBUSD';
               entryAmountRelative: number;
               assetDecimalPlaces: number;
             },
             {
-              symbolPair: "AVAXBUSD" | "MATICBUSD";
+              symbolPair: 'AVAXBUSD' | 'MATICBUSD';
               entryAmountRelative: number;
               assetDecimalPlaces: number;
             }
@@ -1607,7 +1568,7 @@ declare const BotBacktestConfigSchema: z.ZodIntersection<
               periodShort: z.ZodNumber;
               periodLong: z.ZodNumber;
             },
-            "strip",
+            'strip',
             z.ZodTypeAny,
             {
               periodShort: number;
@@ -1621,15 +1582,15 @@ declare const BotBacktestConfigSchema: z.ZodIntersection<
             }
           >;
         },
-        "strip",
+        'strip',
         z.ZodTypeAny,
         {
           strategyConfig: {
-            symbolPair: "AVAXBUSD" | "MATICBUSD";
+            symbolPair: 'AVAXBUSD' | 'MATICBUSD';
             entryAmountRelative: number;
             assetDecimalPlaces: number;
           };
-          strategyName: "CustomStrategy";
+          strategyName: 'CustomStrategy';
           strategySpecificConfig: {
             periodShort: number;
             periodLong: number;
@@ -1638,18 +1599,18 @@ declare const BotBacktestConfigSchema: z.ZodIntersection<
         },
         {
           strategyConfig: {
-            symbolPair: "AVAXBUSD" | "MATICBUSD";
+            symbolPair: 'AVAXBUSD' | 'MATICBUSD';
             entryAmountRelative: number;
             assetDecimalPlaces: number;
           };
-          strategyName: "CustomStrategy";
+          strategyName: 'CustomStrategy';
           strategySpecificConfig: {
             periodShort: number;
             periodLong: number;
             customStrategyParam: string;
           };
         }
-      >
+      >,
     ]
   >,
   z.ZodObject<
@@ -1661,7 +1622,7 @@ declare const BotBacktestConfigSchema: z.ZodIntersection<
           endTime: z.ZodDate;
           fee: z.ZodNumber;
         },
-        "strip",
+        'strip',
         z.ZodTypeAny,
         {
           balance_BUSD: number;
@@ -1677,7 +1638,7 @@ declare const BotBacktestConfigSchema: z.ZodIntersection<
         }
       >;
     },
-    "strip",
+    'strip',
     z.ZodTypeAny,
     {
       backtestConfig: {
@@ -1700,26 +1661,26 @@ declare const BotBacktestConfigSchema: z.ZodIntersection<
 declare const BotBacktestInstanceSchema: z.ZodIntersection<
   z.ZodIntersection<
     z.ZodDiscriminatedUnion<
-      "strategyName",
+      'strategyName',
       [
         z.ZodObject<
           {
-            strategyName: z.ZodLiteral<"SMA">;
+            strategyName: z.ZodLiteral<'SMA'>;
             strategyConfig: z.ZodObject<
               {
-                symbolPair: z.ZodEnum<["AVAXBUSD", "MATICBUSD"]>;
+                symbolPair: z.ZodEnum<['AVAXBUSD', 'MATICBUSD']>;
                 entryAmountRelative: z.ZodNumber;
                 assetDecimalPlaces: z.ZodNumber;
               },
-              "strip",
+              'strip',
               z.ZodTypeAny,
               {
-                symbolPair: "AVAXBUSD" | "MATICBUSD";
+                symbolPair: 'AVAXBUSD' | 'MATICBUSD';
                 entryAmountRelative: number;
                 assetDecimalPlaces: number;
               },
               {
-                symbolPair: "AVAXBUSD" | "MATICBUSD";
+                symbolPair: 'AVAXBUSD' | 'MATICBUSD';
                 entryAmountRelative: number;
                 assetDecimalPlaces: number;
               }
@@ -1729,7 +1690,7 @@ declare const BotBacktestInstanceSchema: z.ZodIntersection<
                 periodShort: z.ZodNumber;
                 periodLong: z.ZodNumber;
               },
-              "strip",
+              'strip',
               z.ZodTypeAny,
               {
                 periodShort: number;
@@ -1741,15 +1702,15 @@ declare const BotBacktestInstanceSchema: z.ZodIntersection<
               }
             >;
           },
-          "strip",
+          'strip',
           z.ZodTypeAny,
           {
             strategyConfig: {
-              symbolPair: "AVAXBUSD" | "MATICBUSD";
+              symbolPair: 'AVAXBUSD' | 'MATICBUSD';
               entryAmountRelative: number;
               assetDecimalPlaces: number;
             };
-            strategyName: "SMA";
+            strategyName: 'SMA';
             strategySpecificConfig: {
               periodShort: number;
               periodLong: number;
@@ -1757,11 +1718,11 @@ declare const BotBacktestInstanceSchema: z.ZodIntersection<
           },
           {
             strategyConfig: {
-              symbolPair: "AVAXBUSD" | "MATICBUSD";
+              symbolPair: 'AVAXBUSD' | 'MATICBUSD';
               entryAmountRelative: number;
               assetDecimalPlaces: number;
             };
-            strategyName: "SMA";
+            strategyName: 'SMA';
             strategySpecificConfig: {
               periodShort: number;
               periodLong: number;
@@ -1770,22 +1731,22 @@ declare const BotBacktestInstanceSchema: z.ZodIntersection<
         >,
         z.ZodObject<
           {
-            strategyName: z.ZodLiteral<"CustomStrategy">;
+            strategyName: z.ZodLiteral<'CustomStrategy'>;
             strategyConfig: z.ZodObject<
               {
-                symbolPair: z.ZodEnum<["AVAXBUSD", "MATICBUSD"]>;
+                symbolPair: z.ZodEnum<['AVAXBUSD', 'MATICBUSD']>;
                 entryAmountRelative: z.ZodNumber;
                 assetDecimalPlaces: z.ZodNumber;
               },
-              "strip",
+              'strip',
               z.ZodTypeAny,
               {
-                symbolPair: "AVAXBUSD" | "MATICBUSD";
+                symbolPair: 'AVAXBUSD' | 'MATICBUSD';
                 entryAmountRelative: number;
                 assetDecimalPlaces: number;
               },
               {
-                symbolPair: "AVAXBUSD" | "MATICBUSD";
+                symbolPair: 'AVAXBUSD' | 'MATICBUSD';
                 entryAmountRelative: number;
                 assetDecimalPlaces: number;
               }
@@ -1796,7 +1757,7 @@ declare const BotBacktestInstanceSchema: z.ZodIntersection<
                 periodShort: z.ZodNumber;
                 periodLong: z.ZodNumber;
               },
-              "strip",
+              'strip',
               z.ZodTypeAny,
               {
                 periodShort: number;
@@ -1810,15 +1771,15 @@ declare const BotBacktestInstanceSchema: z.ZodIntersection<
               }
             >;
           },
-          "strip",
+          'strip',
           z.ZodTypeAny,
           {
             strategyConfig: {
-              symbolPair: "AVAXBUSD" | "MATICBUSD";
+              symbolPair: 'AVAXBUSD' | 'MATICBUSD';
               entryAmountRelative: number;
               assetDecimalPlaces: number;
             };
-            strategyName: "CustomStrategy";
+            strategyName: 'CustomStrategy';
             strategySpecificConfig: {
               periodShort: number;
               periodLong: number;
@@ -1827,18 +1788,18 @@ declare const BotBacktestInstanceSchema: z.ZodIntersection<
           },
           {
             strategyConfig: {
-              symbolPair: "AVAXBUSD" | "MATICBUSD";
+              symbolPair: 'AVAXBUSD' | 'MATICBUSD';
               entryAmountRelative: number;
               assetDecimalPlaces: number;
             };
-            strategyName: "CustomStrategy";
+            strategyName: 'CustomStrategy';
             strategySpecificConfig: {
               periodShort: number;
               periodLong: number;
               customStrategyParam: string;
             };
           }
-        >
+        >,
       ]
     >,
     z.ZodObject<
@@ -1850,7 +1811,7 @@ declare const BotBacktestInstanceSchema: z.ZodIntersection<
             endTime: z.ZodDate;
             fee: z.ZodNumber;
           },
-          "strip",
+          'strip',
           z.ZodTypeAny,
           {
             balance_BUSD: number;
@@ -1866,7 +1827,7 @@ declare const BotBacktestInstanceSchema: z.ZodIntersection<
           }
         >;
       },
-      "strip",
+      'strip',
       z.ZodTypeAny,
       {
         backtestConfig: {
@@ -1891,7 +1852,7 @@ declare const BotBacktestInstanceSchema: z.ZodIntersection<
       name: z.ZodString;
       description: z.ZodString;
     },
-    "strip",
+    'strip',
     z.ZodTypeAny,
     {
       name: string;
