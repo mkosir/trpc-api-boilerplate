@@ -19,150 +19,189 @@ var __copyProps = (to, from, except, desc) => {
 };
 var __toCommonJS = (mod) => __copyProps(__defProp({}, '__esModule', { value: true }), mod);
 
-// build-ocignis-shared/index.ts
-var build_ocignis_shared_exports = {};
-__export(build_ocignis_shared_exports, {
-  BotBacktestConfigSchema: () => BotBacktestConfigSchema,
-  BotBacktestInstanceSchema: () => BotBacktestInstanceSchema,
-  BotConfigSchema: () => BotConfigSchema,
-  BotInstanceSchema: () => BotInstanceSchema,
-  FEE_RATE_BORROW: () => FEE_RATE_BORROW,
-  FEE_RATE_TRADING: () => FEE_RATE_TRADING,
-  KLINE_INTERVALS: () => KLINE_INTERVALS,
-  STRATEGY_NAMES: () => STRATEGY_NAMES,
-  SYMBOL_PAIRS: () => SYMBOL_PAIRS,
+// trpc-api/export/index.ts
+var export_exports = {};
+__export(export_exports, {
+  SharedSquare: () => SharedSquare,
+  USER_ROLES: () => USER_ROLES,
 });
-module.exports = __toCommonJS(build_ocignis_shared_exports);
+module.exports = __toCommonJS(export_exports);
 
-// src/bot/common/types/KlineInterval.ts
-var KLINE_INTERVALS = [
-  '1s',
-  '1m',
-  // '3m',
-  // '5m',
-  // '15m',
-  // '30m',
-  '1h',
-  // '2h',
-  // '4h',
-  // '6h',
-  // '8h',
-  // '12h',
-  '1d',
-  // '3d',
-  '1w',
-  '1M',
-];
-
-// src/bot/common/types/SymbolPair.ts
-var SYMBOL_PAIRS = [
-  // Available also on paper testing - Start
-  // 'BTCBUSD',
-  // 'ETHBUSD',
-  // Available also on paper testing - End
-  // 'SOLBUSD',
-  'AVAXBUSD',
-  'MATICBUSD',
-];
-
-// src/bot/common/consts/FEE_RATE.ts
-var FEE_RATE_TRADING = {
-  noFee: 0,
-  spotTrading_Limit: 0.09,
-  spotTrading_Market: 0.1,
-  usdmFuturesTrading_Limit: 0.012,
-  usdmFuturesTrading_Market: 0.03,
-  coinmFuturesTrading_Limit: 0.01,
-  coinmFuturesTrading_Market: 0.05,
-};
-var FEE_RATE_BORROW = {
-  marginBorrowDailyInterest: 0.03,
-};
-
-// src/bot/strategies/StrategyName.ts
-var STRATEGY_NAMES = ['SMA', 'CustomStrategy'];
-
-// src/bot/Bot/types.ts
-var import_zod4 = require('zod');
-
-// src/bot/strategies/strategy_CustomStrategy/types.ts
-var import_zod = require('zod');
-var Strategy_CustomStrategy_ConfigSchema = import_zod.z.object({
-  customStrategyParam: import_zod.z.string(),
-  periodShort: import_zod.z.number().positive(),
-  periodLong: import_zod.z.number().positive(),
-});
-
-// src/bot/strategies/strategy_SMA/types.ts
+// src/utils/mocks/mockBatches.ts
 var import_zod2 = require('zod');
-var Strategy_SMA_ConfigSchema = import_zod2.z.object({
-  periodShort: import_zod2.z.number().positive(),
-  periodLong: import_zod2.z.number().positive(),
-});
 
-// src/bot/Strategy/types.ts
-var import_zod3 = require('zod');
-var StrategyConfigSchema = import_zod3.z.object({
-  symbolPair: import_zod3.z.enum(SYMBOL_PAIRS),
-  /**
-   *  Open position with relative entry amount of your balance.
-   */
-  entryAmountRelative: import_zod3.z.number().positive({ message: 'Must ba a positive number.' }),
-  /**
-   *  Get this info from exchange, it varies per asset.
-   */
-  assetDecimalPlaces: import_zod3.z.number().min(0).max(5),
+// src/utils/mocks/mockUsers.ts
+var import_zod = require('zod');
+var USER_ROLES = ['administrator', 'apprentice', 'standard'];
+var UserConfigSchema = import_zod.z.object({
+  id: import_zod.z.string(),
+  email: import_zod.z.string(),
+  name: import_zod.z.string(),
+  username: import_zod.z.string(),
+  imageUrl: import_zod.z.string().optional(),
+  role: import_zod.z.enum(USER_ROLES),
 });
+var baseImageUrl = 'https://raw.githubusercontent.com/mkosir/prisma-next-typescript/main/misc/user-images';
+var mockUsers = [
+  {
+    id: '1f008731-4645-43de-8af9-3060d4086001',
+    email: 'walter.white@mail.com',
+    name: 'Walter White',
+    username: 'Heisenberg',
+    imageUrl: `${baseImageUrl}/heisenberg.jpg`,
+    role: 'administrator',
+  },
+  {
+    id: '1f008731-4645-43de-8af9-3060d4086002',
+    email: 'jesse.pinkman@mail.com',
+    name: 'Jesse Pinkman',
+    username: 'Jesse',
+    imageUrl: `${baseImageUrl}/jesse.jpg`,
+    role: 'apprentice',
+  },
+  {
+    id: '1f008731-4645-43de-8af9-3060d4086003',
+    email: 'skyler.white@mail.com',
+    name: 'Skyler White',
+    username: 'Sky',
+    imageUrl: `${baseImageUrl}/sky.jpg`,
+    role: 'standard',
+  },
+  {
+    id: '1f008731-4645-43de-8af9-3060d4086004',
+    email: 'hank.schrader@mail.com',
+    name: 'Hank Schrader',
+    username: 'Hank',
+    imageUrl: `${baseImageUrl}/hank.jpg`,
+    role: 'standard',
+  },
+  {
+    id: '1f008731-4645-43de-8af9-3060d4086005',
+    email: 'marie.schrader@mail.com',
+    name: 'Marie Schrader',
+    username: 'Marie',
+    role: 'standard',
+  },
+  {
+    id: '1f008731-4645-43de-8af9-3060d4086006',
+    email: 'saul.goodman@mail.com',
+    name: 'Saul Goodman',
+    username: 'Jimmy',
+    imageUrl: `${baseImageUrl}/jimmy.jpg`,
+    role: 'standard',
+  },
+  {
+    id: '1f008731-4645-43de-8af9-3060d4086007',
+    email: 'gustavo.fring@mail.com',
+    name: 'Gustavo Fring',
+    username: 'Gus',
+    imageUrl: `${baseImageUrl}/gus.jpg`,
+    role: 'standard',
+  },
+  {
+    id: '1f008731-4645-43de-8af9-3060d4086008',
+    email: 'michael.ehrmantraut@mail.com',
+    name: 'Michael Ehrmantraut',
+    username: 'Mike',
+    imageUrl: `${baseImageUrl}/mike.jpg`,
+    role: 'standard',
+  },
+  {
+    id: '1f008731-4645-43de-8af9-3060d4086009',
+    email: 'hector.salamanca@mail.com',
+    name: 'Hector Salamanca',
+    username: 'Tio',
+    imageUrl: `${baseImageUrl}/tio.jpg`,
+    role: 'standard',
+  },
+  {
+    id: '1f008731-4645-43de-8af9-3060d4086010',
+    email: 'alberto.salamanca@mail.com',
+    name: 'Alberto Salamanca',
+    username: 'Tuco',
+    role: 'standard',
+  },
+  {
+    id: '1f008731-4645-43de-8af9-3060d4086011',
+    email: 'gale.boetticher@mail.com',
+    name: 'Gale Boetticher',
+    username: 'Captain Nerd',
+    role: 'apprentice',
+  },
+];
 
-// src/bot/Bot/types.ts
-var BotConfigSchema = import_zod4.z.discriminatedUnion('strategyName', [
-  import_zod4.z.object({
-    strategyName: import_zod4.z.literal('SMA'),
-    strategyConfig: StrategyConfigSchema,
-    strategySpecificConfig: Strategy_SMA_ConfigSchema,
-  }),
-  import_zod4.z.object({
-    strategyName: import_zod4.z.literal('CustomStrategy'),
-    strategyConfig: StrategyConfigSchema,
-    strategySpecificConfig: Strategy_CustomStrategy_ConfigSchema,
-  }),
-]);
-var BotInstanceSchema = BotConfigSchema.and(
-  import_zod4.z.object({
-    name: import_zod4.z.string().min(1),
-    description: import_zod4.z.string(),
-  }),
-);
-
-// src/bot/BotBacktest/types.ts
-var import_zod5 = require('zod');
-var BacktestConfigSchema = import_zod5.z.object({
-  balance_BUSD: import_zod5.z.number().positive(),
-  startTime: import_zod5.z.date().min(/* @__PURE__ */ new Date('2017-01-01T00:00:00.000Z')),
-  endTime: import_zod5.z.date().max(/* @__PURE__ */ new Date()),
-  fee: import_zod5.z.number().nonnegative(),
+// src/utils/mocks/mockBatches.ts
+var BatchConfigSchema = import_zod2.z.object({
+  id: import_zod2.z.string(),
+  title: import_zod2.z.string(),
+  description: import_zod2.z.string().nullable(),
+  purity: import_zod2.z.number().min(0).max(100),
+  weight: import_zod2.z.number().positive({ message: 'Must be a positive number.' }),
+  producers: UserConfigSchema.array(),
+  supplier: import_zod2.z
+    .object({
+      id: import_zod2.z.string(),
+      name: import_zod2.z.string(),
+      description: import_zod2.z.string().nullable(),
+    })
+    .nullable(),
 });
-var BotBacktestConfigSchema = BotConfigSchema.and(
-  import_zod5.z.object({
-    backtestConfig: BacktestConfigSchema,
-  }),
-);
-var BotBacktestInstanceSchema = BotBacktestConfigSchema.and(
-  import_zod5.z.object({
-    name: import_zod5.z.string().min(1),
-    description: import_zod5.z.string(),
-  }),
-);
+var mockBatches = [
+  {
+    id: '2f008731-4645-43de-8af9-3060d4086001',
+    title: 'Blue Sky',
+    description: 'summer batch',
+    purity: 99.11,
+    weight: 145.64,
+    producers: [mockUsers[0], mockUsers[1]],
+    supplier: {
+      id: '3f008731-4645-43de-8af9-3060d4086001',
+      name: 'Golden Moth Chemical',
+      description: 'Golden bee company logo.',
+    },
+  },
+  {
+    id: '2f008731-4645-43de-8af9-3060d4086002',
+    title: 'Blue Sky',
+    description: 'bad batch',
+    purity: 45.72,
+    weight: 142.18,
+    producers: [mockUsers[0], mockUsers[1]],
+    supplier: {
+      id: '3f008731-4645-43de-8af9-3060d4086002',
+      name: 'Warehouse',
+      description:
+        "Lock security guard into portable toilet, don't roll but carry stolen barrel of methylamine, improvise as it goes...",
+    },
+  },
+  {
+    id: '2f008731-4645-43de-8af9-3060d4086003',
+    title: 'Blue Sky',
+    description: null,
+    purity: 99.4,
+    weight: 149.7,
+    producers: [mockUsers[0]],
+    supplier: null,
+  },
+  {
+    id: '2f008731-4645-43de-8af9-3060d4086004',
+    title: 'Blue Sky',
+    description: null,
+    purity: 98.64,
+    weight: 146.51,
+    producers: [mockUsers[1]],
+    supplier: null,
+  },
+];
+
+// trpc-api/export/index.ts
+var SharedSquare = {
+  shape: 'square',
+  size: 50,
+};
 // Annotate the CommonJS export names for ESM import in node:
 0 &&
   (module.exports = {
-    BotBacktestConfigSchema,
-    BotBacktestInstanceSchema,
-    BotConfigSchema,
-    BotInstanceSchema,
-    FEE_RATE_BORROW,
-    FEE_RATE_TRADING,
-    KLINE_INTERVALS,
-    STRATEGY_NAMES,
-    SYMBOL_PAIRS,
+    SharedSquare,
+    USER_ROLES,
   });
