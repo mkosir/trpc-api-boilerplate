@@ -3,7 +3,7 @@
 Minimal tRPC API boilerplate. Easily build &amp; publish fully typesafe APIs that any frontend can consume.
 
 Monorepos are great, but if frontend and backend are in separate repositories, checkout this boilerplate.  
-It's useful when strict separation of backend and frontend domain & developers (especially in larger teams/companies) is targeted.
+It's useful when strict separation of backend and frontend domain & developers is targeted (larger teams/companies).
 
 ## Running
 
