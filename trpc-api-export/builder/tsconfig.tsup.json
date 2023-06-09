@@ -18,10 +18,6 @@
     "isolatedModules": true,
     "skipLibCheck": true,
     "esModuleInterop": true,
-    // "typeRoots": [
-    //   "../src/server/rest-api/common/types",
-    //   "../node_modules/@types"
-    // ],
     "moduleResolution": "node",
     "module": "commonjs",
     "target": "ES2022"

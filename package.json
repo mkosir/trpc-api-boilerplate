@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "export-trpc-api": "tsup --config trpc-api/export/tsup.config.ts && npm run format-fix",
+    "trpc-api-export": "tsup --config trpc-api-export/builder/tsup.config.ts && npm run format-fix",
     "prepare": "husky install",
     "dev": "ts-node-dev src/index.ts",
     "lint": "eslint --max-warnings 0 .",

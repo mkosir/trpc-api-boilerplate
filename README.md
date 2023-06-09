@@ -16,7 +16,7 @@ _Easily set up a local development environment_
 
 - fork & clone repo
 - `npm install`
-- make changes to tRPC API & `npm run export-trpc-api`
+- make changes to tRPC API & `npm run trpc-api-export`
 - push changes and consume tRPC API with any frontend app 🚀
 
 ## Example Repo
