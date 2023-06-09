@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "compilerOptions": {
+    "noEmit": true,
+    "outDir": "dist",
+    "baseUrl": "src",
+    "paths": {
+      ".": ["."]
+    },
+
+    "allowJs": true,
+    "strict": true,
+    "strictNullChecks": true,
+    "pretty": true,
+    "forceConsistentCasingInFileNames": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "incremental": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    // "typeRoots": ["src/server/rest-api/common/types", "node_modules/@types"],
+    "moduleResolution": "node",
+    "module": "commonjs",
+    "target": "ES2022"
+  },
+  "exclude": ["dist", "node_modules"]
+}
