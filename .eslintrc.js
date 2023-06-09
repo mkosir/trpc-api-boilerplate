@@ -42,7 +42,7 @@ module.exports = {
     ],
   },
 
-  ignorePatterns: ['!.*', 'node_modules', 'dist', 'compiled', 'build', 'trpc-api'],
+  ignorePatterns: ['!.*', 'node_modules', 'dist', 'compiled', 'build', 'trpc-api/dist'],
 
   settings: {
     typescript: {},

@@ -1,11 +1,20 @@
-// To achieve best tree shaking try to export files by exact file path where export is located. (https://github.com/egoist/tsup/issues/578)
+export type { AppRouter } from 'trpc/router';
 
-export type { AppRouter } from 'server/trpc/router';
+export { USER_ROLES } from 'utils';
 
-export * from 'bot/common/types';
-export * from 'bot/common/consts';
-export { STRATEGY_NAMES } from 'bot/strategies/StrategyName';
+// Export any backend types, objects etc. that should be shared with frontend
+type Square = {
+  shape: 'square';
+  size: number;
+};
+type Rectangle = {
+  shape: 'rectangle';
+  width: number;
+  height: number;
+};
+export type Shape = Square | Rectangle;
 
-// Zod Schemas
-export { BotConfigSchema, BotInstanceSchema } from 'bot/Bot/types';
-export { BotBacktestConfigSchema, BotBacktestInstanceSchema } from 'bot/BotBacktest/types';
+export const SharedSquare: Shape = {
+  shape: 'square',
+  size: 50,
+};
