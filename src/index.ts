@@ -28,6 +28,6 @@ app.use('/', (_req, res) => {
   return res.send('tRPC API Boilerplate');
 });
 
-app.listen(process.env.PORT, () => {
-  console.log(`Server running on port ${process.env.PORT}.`);
+app.listen(process.env.PORT ?? 4000, () => {
+  console.log(`Server running on port ${process.env.PORT ?? 4000}.`);
 });
