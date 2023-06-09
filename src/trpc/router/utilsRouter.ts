@@ -1,5 +1,5 @@
-import { db } from 'index';
-import { Batches, DeepMutable, Users, mockBatches, mockUsers } from 'utils';
+import { db, Batches, Users } from 'db';
+import { DeepMutable, mockBatches, mockUsers } from 'utils';
 
 import { router, publicProcedure } from '..';
 

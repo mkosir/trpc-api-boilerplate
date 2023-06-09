@@ -1,7 +1,7 @@
 import { z } from 'zod';
 
-import { db } from 'index';
-import { User, UserConfigSchema, sleep } from 'utils';
+import { db, User, UserConfigSchema } from 'db';
+import { sleep } from 'utils';
 
 import { router, publicProcedure } from '../';
 

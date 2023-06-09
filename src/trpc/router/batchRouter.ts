@@ -1,4 +1,4 @@
-import { db } from 'index';
+import { db } from 'db';
 import { sleep } from 'utils';
 
 import { router, publicProcedure } from '..';
