@@ -4,8 +4,6 @@ import * as express from 'express';
 import * as qs from 'qs';
 import * as express_serve_static_core from 'express-serve-static-core';
 
-declare const USER_ROLES: readonly ['administrator', 'apprentice', 'standard'];
-
 type DeepMutable<T> = {
   -readonly [P in keyof T]: DeepMutable<T[P]>;
 };
@@ -297,6 +295,8 @@ declare const appRouter: _trpc_server.CreateRouterInner<
   }
 >;
 type AppRouter = typeof appRouter;
+
+declare const USER_ROLES: readonly ['administrator', 'apprentice', 'standard'];
 
 type Square = {
   shape: 'square';
