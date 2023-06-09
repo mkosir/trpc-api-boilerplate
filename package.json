@@ -5,7 +5,7 @@
   "scripts": {
     "export-trpc-api": "tsup --config build-ocignis-shared/tsup.config.ts && npm run format-fix",
     "prepare": "husky install",
-    "dev": "aaaaaaaaaaaaaaaa",
+    "dev": "ts-node-dev src/index.ts",
     "lint": "eslint --max-warnings 0 .",
     "lint-fix": "eslint --fix .",
     "lint-staged-husky": "lint-staged",
@@ -34,6 +34,8 @@
     "lint-staged": "13.2.2",
     "prettier": "2.8.8",
     "pretty-quick": "3.1.3",
+    "ts-node": "10.9.1",
+    "ts-node-dev": "2.0.0",
     "tsup": "6.7.0",
     "typescript": "5.1.3"
   }
