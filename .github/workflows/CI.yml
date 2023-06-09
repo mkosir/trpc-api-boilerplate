@@ -47,4 +47,3 @@ jobs:
 
       - name: TypeScript Compiler 🔎
         run: npm run tsc
-        
