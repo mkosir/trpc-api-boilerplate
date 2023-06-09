@@ -2,7 +2,7 @@
 
 Minimal tRPC API boilerplate. Easily build &amp; publish fully typesafe APIs that any frontend can consume.
 
-Monorepos are great, but sometimes we are targeting frontend and backend as separate repositories:
+Monorepos are great, but sometimes we are targeting backend and frontend as separate repositories:
 
 - separation/encapsulation of backend and frontend domain (except what must be exposed to both through API).
 - separation of backend and frontend developers (larger teams/companies).
