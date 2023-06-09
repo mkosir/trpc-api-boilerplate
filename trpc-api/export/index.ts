@@ -1,6 +1,6 @@
 export type { AppRouter } from 'trpc/router';
 
-export { USER_ROLES } from 'utils';
+export { USER_ROLES } from 'utils/mocks/mockUsers';
 
 // Export any backend types, objects etc. that should be shared with frontend
 type Square = {
