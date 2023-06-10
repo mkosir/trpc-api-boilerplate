@@ -7,5 +7,7 @@ export const utilRouter = router({
   seedDb: publicProcedure.query(() => {
     db.users = structuredClone(mockUsers) as unknown as DeepMutable<Users>;
     db.batches = structuredClone(mockBatches) as unknown as DeepMutable<Batches>;
+
+    return 'Database initialized successfully.';
   }),
 });
