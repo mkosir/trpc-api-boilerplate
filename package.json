@@ -6,7 +6,7 @@
     "trpc-api-export": "tsup --config trpc-api-export/builder/tsup.config.ts && npm run format-fix",
     "prepare": "husky install",
     "build": "shx rm -rf build && tsc -p tsconfig.json",
-    "dev": "PORT=4000 ts-node-dev src/index.ts",
+    "dev": "PORT=4000 ts-node-dev -r tsconfig-paths/register src/index.ts",
     "lint": "eslint --max-warnings 0 .",
     "lint-fix": "eslint --fix .",
     "lint-staged-husky": "lint-staged",
@@ -38,6 +38,7 @@
     "shx": "0.3.4",
     "ts-node": "10.9.1",
     "ts-node-dev": "2.0.0",
+    "tsconfig-paths": "4.2.0",
     "tsup": "6.7.0",
     "typescript": "5.1.3"
   }
