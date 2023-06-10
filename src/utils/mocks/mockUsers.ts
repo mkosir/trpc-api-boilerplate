@@ -1,6 +1,6 @@
 import { Users } from 'db';
 
-const baseImageUrl = 'https://raw.githubusercontent.com/mkosir/prisma-next-typescript/main/misc/user-images';
+const baseImageUrl = 'https://raw.githubusercontent.com/mkosir/trpc-fe-boilerplate/main/misc/user-images';
 
 export const mockUsers = [
   {
