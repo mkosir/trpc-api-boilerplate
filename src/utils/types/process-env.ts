@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-empty-interface */
+/* eslint-disable @typescript-eslint/no-namespace */
 /* eslint-disable @typescript-eslint/consistent-type-definitions */
 
 import { z } from 'zod';
@@ -9,6 +11,6 @@ const envVariables = z.object({
 
 declare global {
   namespace NodeJS {
-    type ProcessEnv = z.infer<typeof envVariables>;
+    interface ProcessEnv extends z.infer<typeof envVariables> {}
   }
 }
