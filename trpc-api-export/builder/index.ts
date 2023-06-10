@@ -1,5 +1,6 @@
 export type { AppRouter } from 'trpc/router';
 
+// Export user roles array as source of truth for frontend (select component, render list of available roles etc.)
 export { USER_ROLES } from 'db/User';
 
 // Export any backend types, objects etc. that should be shared with frontend
