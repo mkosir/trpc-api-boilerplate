@@ -288,7 +288,7 @@ declare const appRouter: _trpc_server.CreateRouterInner<
             _output_out: typeof _trpc_server.unsetMarker;
             _meta: object;
           },
-          string
+          'Database initialized successfully.'
         >;
       }
     >;

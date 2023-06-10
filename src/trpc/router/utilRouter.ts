@@ -8,6 +8,6 @@ export const utilRouter = router({
     db.users = structuredClone(mockUsers) as unknown as DeepMutable<Users>;
     db.batches = structuredClone(mockBatches) as unknown as DeepMutable<Batches>;
 
-    return 'Database initialized successfully.';
+    return 'Database initialized successfully.' as const;
   }),
 });
