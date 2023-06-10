@@ -243,7 +243,7 @@ declare const appRouter: _trpc_server.CreateRouterInner<
         >;
       }
     >;
-    utils: _trpc_server.CreateRouterInner<
+    util: _trpc_server.CreateRouterInner<
       _trpc_server.RootConfig<{
         ctx: {
           req: express.Request<express_serve_static_core.ParamsDictionary, any, any, qs.ParsedQs, Record<string, any>>;
