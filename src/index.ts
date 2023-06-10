@@ -18,7 +18,19 @@ app.use(
 );
 
 app.use('/', (_req, res) => {
-  return res.send('tRPC API Boilerplate');
+  return res.status(200).header('Content-Type', 'text/html').send(`
+    <div>
+      <h3>tRPC API Boilerplate</h3>
+      <br />
+      <div style="color:dimgray; font-style: italic; font-size: 18px;">
+        <ul>
+          <li><a title="http://localhost:4000/trpc/user.list" href="http://localhost:4000/trpc/user.list">User list</a></li>
+          <li><a title="http://localhost:4000/trpc/batch.list" href="http://localhost:4000/trpc/batch.list">Batch list</a></li>
+          <li><a title="http://localhost:4000/trpc/util.seedDb" href="http://localhost:4000/trpc/util.seedDb">Util - Seed DB</a></li>
+        </ul>
+      </div>
+    </div>
+    `);
 });
 
 app.listen(process.env.PORT, () => {

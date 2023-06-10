@@ -2,12 +2,12 @@ import { router } from '..';
 
 import { batchRouter } from './batchRouter';
 import { userRouter } from './userRouter';
-import { utilsRouter } from './utilsRouter';
+import { utilRouter } from './utilRouter';
 
 export const appRouter = router({
   batch: batchRouter,
   user: userRouter,
-  utils: utilsRouter,
+  util: utilRouter,
 });
 
 export type AppRouter = typeof appRouter;
