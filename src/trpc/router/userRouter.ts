@@ -28,13 +28,9 @@ export const userRouter = router({
     await sleep(2000);
 
     const index = db.users.findIndex((user) => user.id === id);
+    const deletedUser = db.users.splice(index, 1);
 
-    if (index > -1) {
-      const deletedUser = db.users.splice(index, 1);
-      return deletedUser;
-    }
-
-    return null;
+    return deletedUser;
   }),
 
   create: publicProcedure

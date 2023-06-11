@@ -223,15 +223,14 @@ declare const appRouter: _trpc_server.CreateRouterInner<
             _output_in: typeof _trpc_server.unsetMarker;
             _output_out: typeof _trpc_server.unsetMarker;
           },
-          | DeepMutable<{
-              id: string;
-              email: string;
-              name: string;
-              username: string;
-              role: 'administrator' | 'apprentice' | 'standard';
-              imageUrl?: string | undefined;
-            }>[]
-          | null
+          DeepMutable<{
+            id: string;
+            email: string;
+            name: string;
+            username: string;
+            role: 'administrator' | 'apprentice' | 'standard';
+            imageUrl?: string | undefined;
+          }>[]
         >;
         create: _trpc_server.BuildProcedure<
           'mutation',
