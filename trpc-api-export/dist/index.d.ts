@@ -262,7 +262,7 @@ declare const appRouter: _trpc_server.CreateRouterInner<
       }>,
       {
         seedDb: _trpc_server.BuildProcedure<
-          'query',
+          'mutation',
           {
             _config: _trpc_server.RootConfig<{
               ctx: {
