@@ -6,7 +6,7 @@ import { z } from 'zod';
 
 const envVariables = z.object({
   NODE_ENV: z.union([z.literal('development'), z.literal('production')]),
-  PORT: z.string(),
+  PORT: z.string().optional(),
 });
 
 declare global {

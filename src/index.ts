@@ -5,7 +5,8 @@ import express from 'express';
 import { createContext } from './trpc';
 import { appRouter } from './trpc/router';
 
-const BASE_URL = `http://localhost:${process.env.PORT}`;
+const PORT = process.env.PORT ?? 4000;
+const BASE_URL = `http://localhost:${PORT}`;
 
 const app = express();
 
@@ -47,6 +48,6 @@ app.use('/', (_req, res) => {
     `);
 });
 
-app.listen(process.env.PORT, () => {
+app.listen(PORT, () => {
   console.log(`Server running on ${BASE_URL}`);
 });
