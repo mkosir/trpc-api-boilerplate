@@ -7,6 +7,7 @@
     "prepare": "husky install",
     "build": "shx rm -rf build && tsc -p tsconfig.json",
     "dev": "ts-node-dev -r tsconfig-paths/register src/index.ts",
+    "start": "NODE_PATH=./build/src node build/src/index.js",
     "lint": "eslint --max-warnings 0 .",
     "lint-fix": "eslint --fix .",
     "lint-staged-husky": "lint-staged",
