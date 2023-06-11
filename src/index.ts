@@ -22,6 +22,7 @@ app.use(
 app.use('/', (_req, res) => {
   return res.status(200).header('Content-Type', 'text/html').send(`
     <div>
+      <img src="https://raw.githubusercontent.com/mkosir/trpc-fe-boilerplate/main/misc/heisenberg.png" />
       <h3>tRPC API Boilerplate</h3>
       <br />
       <div style="color:dimgray; font-style: italic; font-size: 18px;">
