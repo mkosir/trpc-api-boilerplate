@@ -175,7 +175,6 @@ declare const appRouter: _trpc_server.CreateRouterInner<
             _output_in: typeof _trpc_server.unsetMarker;
             _output_out: typeof _trpc_server.unsetMarker;
           },
-          | string
           | DeepMutable<{
               id: string;
               email: string;
@@ -184,6 +183,7 @@ declare const appRouter: _trpc_server.CreateRouterInner<
               role: 'administrator' | 'apprentice' | 'standard';
               imageUrl?: string | undefined;
             }>
+          | `User with id:${string} does not exist in database.`
         >;
         destroy: _trpc_server.BuildProcedure<
           'mutation',
