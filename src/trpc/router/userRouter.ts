@@ -29,5 +29,7 @@ export const userRouter = router({
       const newUser: User = { id: crypto.randomUUID(), ...user };
 
       db.users.push(newUser);
+
+      return newUser;
     }),
 });
