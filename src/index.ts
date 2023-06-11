@@ -25,14 +25,27 @@ app.use('/', (_req, res) => {
       <img src="https://raw.githubusercontent.com/mkosir/trpc-fe-boilerplate/main/misc/heisenberg.png" />
       <h3>tRPC API Boilerplate</h3>
       <br />
-      <div style="color:dimgray; font-style: italic; font-size: 18px;">
+      <div style="color:black; font-style: italic; font-size: 18px;">
         <ul>
-          <li><a title="Query - ${BASE_URL}/trpc/user.list" href="${BASE_URL}/trpc/user.list">User list</a></li>
-          <li><a title="Query - ${BASE_URL}/trpc/batch.list" href="${BASE_URL}/trpc/batch.list">Batch list</a></li>
+          User
+          <li><a title="Query - ${BASE_URL}/trpc/user.list" href="${BASE_URL}/trpc/user.list">List</a></li>
+          <li>
+            <form method="post" action="${BASE_URL}/trpc/user.destroy">
+              <button type="submit" title="Mutation - ${BASE_URL}/trpc/user.destroy">Delete</button>
+              <input name="id">
+            </form>
+          </li>
+        </ul>
+        <ul>
+          Batch
+          <li><a title="Query - ${BASE_URL}/trpc/batch.list" href="${BASE_URL}/trpc/batch.list">List</a></li>
+        </ul>
+        <ul>
+          Util
           <li>
             <form method="post" action="${BASE_URL}/trpc/util.seedDb">
-              <button type="submit" title="Mutation - ${BASE_URL}/trpc/util.seedDb">Util - Seed DB</button>
-          </form>
+              <button type="submit" title="Mutation - ${BASE_URL}/trpc/util.seedDb">Seed DB</button>
+            </form>
           </li>
         </ul>
       </div>
