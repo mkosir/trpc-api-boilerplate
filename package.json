@@ -15,7 +15,7 @@
     "format-fix": "prettier --config .prettierrc --write --ignore-unknown -l ."
   },
   "dependencies": {
-    "@trpc/server": "10.29.1",
+    "@trpc/server": "10.30.0",
     "cors": "2.8.5",
     "express": "4.18.2",
     "superjson": "1.12.3",
