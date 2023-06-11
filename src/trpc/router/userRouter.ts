@@ -12,6 +12,16 @@ export const userRouter = router({
     return db.users;
   }),
 
+  show: publicProcedure.input(z.string().min(1)).query(({ input: userId }) => {
+    const user = db.users.find((user) => user.id === userId);
+
+    if (user) {
+      return user;
+    }
+
+    return `User with id:${userId} does not exist in database.`;
+  }),
+
   destroy: publicProcedure.input(z.object({ id: z.string().min(1) })).mutation(({ input: { id } }) => {
     const index = db.users.findIndex((user) => user.id === id);
 

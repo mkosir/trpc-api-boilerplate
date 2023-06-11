@@ -141,6 +141,42 @@ declare const appRouter: _trpc_server.CreateRouterInner<
             imageUrl?: string | undefined;
           }>[]
         >;
+        show: _trpc_server.BuildProcedure<
+          'query',
+          {
+            _config: _trpc_server.RootConfig<{
+              ctx: {
+                req: express.Request<
+                  express_serve_static_core.ParamsDictionary,
+                  any,
+                  any,
+                  qs.ParsedQs,
+                  Record<string, any>
+                >;
+                res: express.Response<any, Record<string, any>>;
+              };
+              meta: object;
+              errorShape: _trpc_server.DefaultErrorShape;
+              transformer: typeof superjson.default;
+            }>;
+            _meta: object;
+            _ctx_out: {
+              req: express.Request<
+                express_serve_static_core.ParamsDictionary,
+                any,
+                any,
+                qs.ParsedQs,
+                Record<string, any>
+              >;
+              res: express.Response<any, Record<string, any>>;
+            };
+            _input_in: string;
+            _input_out: string;
+            _output_in: typeof _trpc_server.unsetMarker;
+            _output_out: typeof _trpc_server.unsetMarker;
+          },
+          void
+        >;
         destroy: _trpc_server.BuildProcedure<
           'mutation',
           {

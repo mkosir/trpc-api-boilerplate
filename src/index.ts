@@ -30,9 +30,9 @@ app.use('/', (_req, res) => {
           User
           <li><a title="Query - ${BASE_URL}/trpc/user.list" href="${BASE_URL}/trpc/user.list">List</a></li>
           <li>
-            <form method="post" action="${BASE_URL}/trpc/user.destroy">
-              <button type="submit" title="Mutation - ${BASE_URL}/trpc/user.destroy">Delete</button>
-              <input name="id">
+            <form method="get" action="${BASE_URL}/trpc/user.show">
+              <button type="submit" title="Query - ${BASE_URL}/trpc/user.show">Show</button>
+              User id: <input name="input" value="1f008731-4645-43de-8af9-3060d4086001">
             </form>
           </li>
         </ul>
