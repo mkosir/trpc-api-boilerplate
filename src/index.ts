@@ -26,9 +26,13 @@ app.use('/', (_req, res) => {
       <br />
       <div style="color:dimgray; font-style: italic; font-size: 18px;">
         <ul>
-          <li><a title="${BASE_URL}/trpc/user.list" href="${BASE_URL}/trpc/user.list">User list</a></li>
-          <li><a title="${BASE_URL}/trpc/batch.list" href="${BASE_URL}/trpc/batch.list">Batch list</a></li>
-          <li><a title="${BASE_URL}/trpc/util.seedDb" href="${BASE_URL}/trpc/util.seedDb">Util - Seed DB</a></li>
+          <li><a title="Query - ${BASE_URL}/trpc/user.list" href="${BASE_URL}/trpc/user.list">User list</a></li>
+          <li><a title="Query - ${BASE_URL}/trpc/batch.list" href="${BASE_URL}/trpc/batch.list">Batch list</a></li>
+          <li>
+            <form method="post" action="${BASE_URL}/trpc/util.seedDb">
+              <button type="submit" title="Mutation - ${BASE_URL}/trpc/util.seedDb">Util - Seed DB</button>
+          </form>
+          </li>
         </ul>
       </div>
     </div>
