@@ -19,7 +19,7 @@ export const userRouter = router({
       return user;
     }
 
-    return `User with id:${userId} does not exist in database.`;
+    return `User with id:${userId} does not exist in database.` as const;
   }),
 
   destroy: publicProcedure.input(z.object({ id: z.string().min(1) })).mutation(({ input: { id } }) => {

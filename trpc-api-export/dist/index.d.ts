@@ -175,7 +175,15 @@ declare const appRouter: _trpc_server.CreateRouterInner<
             _output_in: typeof _trpc_server.unsetMarker;
             _output_out: typeof _trpc_server.unsetMarker;
           },
-          void
+          | string
+          | DeepMutable<{
+              id: string;
+              email: string;
+              name: string;
+              username: string;
+              role: 'administrator' | 'apprentice' | 'standard';
+              imageUrl?: string | undefined;
+            }>
         >;
         destroy: _trpc_server.BuildProcedure<
           'mutation',
