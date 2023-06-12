@@ -1,4 +1,4 @@
-# tRPC API Boilerplate
+# tRPC API Boilerplate ![Heisenberg](https://raw.githubusercontent.com/mkosir/trpc-fe-boilerplate/main/misc/heisenberg_75.png)
 
 [![CI][ci-badge]][ci-url]
 [![npm version][npm-badge]][npm-url]
