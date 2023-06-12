@@ -25,7 +25,7 @@ _Easily set up a local development environment_
 
 Example frontend app repository - [tRPC Frontend Boilerplate](https://github.com/mkosir/trpc-fe-boilerplate)
 
-## Avoid publishing package?
+### Avoid publishing package?
 
 If for whatever reason publishing a package is not an option:
 
