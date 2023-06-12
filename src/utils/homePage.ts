@@ -9,6 +9,7 @@ export const homePage = `
     <h3>tRPC API Boilerplate</h3>
     <br />
     <div style="color:black; font-style: italic; font-size: 18px;">
+    Router:
       <ul>
         User
         <li><a title="Query - /trpc/user.list" href="/trpc/user.list">List</a></li>
