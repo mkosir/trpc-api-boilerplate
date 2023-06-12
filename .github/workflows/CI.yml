@@ -47,3 +47,19 @@ jobs:
 
       - name: TypeScript Compiler 🔎
         run: npm run tsc
+
+  deploy:
+    name: Deploy 🚀
+    needs: [build, lint, tsc]
+    runs-on: ubuntu-latest
+
+    environment:
+      name: tRPC API
+      url: https://trpc-api-boilerplate.onrender.com
+
+    steps:
+      - name: Deploy 🚀
+        uses: fjogeleit/http-request-action@v1
+        with:
+          url: ${{ secrets.RENDER_DEPLOY_HOOK }}
+          method: 'GET'
