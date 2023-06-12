@@ -30,7 +30,7 @@ Example frontend app repository - [tRPC Frontend Boilerplate](https://github.com
 If for whatever reason publishing a package is not an option:
 
 - privacy concerns
-- faster development iterations - skip CI deployment (BE/FE monorepo look and feel)
+- faster development iterations - skip CI (BE/FE monorepo look and feel)
 - ...
 
 Run `npm run trpc-api-export` and push code changes. In your [frontend app](https://github.com/mkosir/trpc-fe-boilerplate/blob/main/package.json#L6) run `npm run trpc-api-import`.
