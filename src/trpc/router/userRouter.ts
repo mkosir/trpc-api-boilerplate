@@ -7,13 +7,13 @@ import { router, publicProcedure } from '../';
 
 export const userRouter = router({
   list: publicProcedure.query(async () => {
-    await sleep(2000);
+    await sleep(1000);
 
     return db.users;
   }),
 
   show: publicProcedure.input(z.string().min(1)).query(async ({ input: userId }) => {
-    await sleep(2000);
+    await sleep(1000);
 
     const user = db.users.find((user) => user.id === userId);
 
@@ -25,7 +25,7 @@ export const userRouter = router({
   }),
 
   destroy: publicProcedure.input(z.object({ id: z.string().min(1) })).mutation(async ({ input: { id } }) => {
-    await sleep(2000);
+    await sleep(1000);
 
     const index = db.users.findIndex((user) => user.id === id);
     const deletedUser = db.users.splice(index, 1);
@@ -36,7 +36,7 @@ export const userRouter = router({
   create: publicProcedure
     .input(z.object({ user: UserConfigSchema.omit({ id: true }) }))
     .mutation(async ({ input: { user } }) => {
-      await sleep(2000);
+      await sleep(1000);
 
       const newUser: User = { id: crypto.randomUUID(), ...user };
 
