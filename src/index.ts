@@ -7,9 +7,6 @@ import { homePage } from 'utils';
 import { createContext } from './trpc';
 import { appRouter } from './trpc/router';
 
-const PORT = process.env.PORT ?? 4000;
-const BASE_URL = `http://localhost:${PORT}`;
-
 const app = express();
 
 app.use(cors());
@@ -26,6 +23,8 @@ app.use('/', (_req, res) => {
   return res.type('html').send(homePage);
 });
 
+const PORT = process.env.PORT ?? 4000;
+
 app.listen(PORT, () => {
-  console.log(`Server running on ${BASE_URL}`);
+  console.log(`Server running on port ${PORT}.`);
 });
