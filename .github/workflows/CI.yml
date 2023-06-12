@@ -48,6 +48,23 @@ jobs:
       - name: TypeScript Compiler 🔎
         run: npm run tsc
 
+  npm-release:
+    name: npm release 📦
+    needs: [build, lint, tsc]
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout 🛎️
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js ⚙️ - Cache dependencies ⚡ - Install dependencies 🔧
+        uses: ./.github/workflows/actions/setup_node-cache_dep-install_dep
+
+      - name: npm release 📦
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: npm run semantic-release
+
   deploy:
     name: Deploy 🚀
     needs: [build, lint, tsc]

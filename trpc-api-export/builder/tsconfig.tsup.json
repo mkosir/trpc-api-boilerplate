@@ -22,5 +22,5 @@
     "module": "commonjs",
     "target": "ES2022"
   },
-  "exclude": ["../../dist", "../../node_modules"]
+  "exclude": ["../../build", "../../node_modules"]
 }
