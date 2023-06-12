@@ -1,6 +1,7 @@
 # tRPC API Boilerplate
 
 [![CI][ci-badge]][ci-url]
+[![npm version][npm-badge]][npm-url]
 
 Minimal [tRPC](https://trpc.io/) API boilerplate. Easily build &amp; publish fully typesafe APIs that any frontend can consume.
 
@@ -39,3 +40,5 @@ Run `npm run trpc-api-export` and push code changes. In your [frontend app](http
 
 [ci-badge]: https://github.com/mkosir/trpc-api-boilerplate/actions/workflows/CI.yml/badge.svg
 [ci-url]: https://github.com/mkosir/trpc-api-boilerplate/actions/workflows/CI.yml
+[npm-url]: https://www.npmjs.com/package/trpc-api-boilerplate
+[npm-badge]: https://img.shields.io/npm/v/trpc-api-boilerplate.svg
