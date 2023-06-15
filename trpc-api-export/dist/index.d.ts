@@ -358,6 +358,6 @@ type Rectangle = {
   height: number;
 };
 type Shape = Square | Rectangle;
-declare const SharedSquare: Shape;
+declare const SharedSquareObject: Shape;
 
-export { AppRouter, Shape, SharedSquare, USER_ROLES };
+export { AppRouter, Shape, SharedSquareObject, USER_ROLES };

@@ -22,7 +22,7 @@ var __toCommonJS = (mod) => __copyProps(__defProp({}, '__esModule', { value: tru
 // trpc-api-export/builder/index.ts
 var builder_exports = {};
 __export(builder_exports, {
-  SharedSquare: () => SharedSquare,
+  SharedSquareObject: () => SharedSquareObject,
   USER_ROLES: () => USER_ROLES,
 });
 module.exports = __toCommonJS(builder_exports);
@@ -40,13 +40,13 @@ var UserConfigSchema = import_zod.z.object({
 });
 
 // trpc-api-export/builder/index.ts
-var SharedSquare = {
+var SharedSquareObject = {
   shape: 'square',
   size: 50,
 };
 // Annotate the CommonJS export names for ESM import in node:
 0 &&
   (module.exports = {
-    SharedSquare,
+    SharedSquareObject,
     USER_ROLES,
   });
