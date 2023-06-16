@@ -34,7 +34,10 @@ If for whatever reason publishing a package is not an option:
 - faster development iterations - skip CI (BE/FE monorepo look and feel)
 - ...
 
-Use npm link or run `npm run trpc-api-export` and push code changes. In your [frontend app](https://github.com/mkosir/trpc-fe-boilerplate/blob/main/package.json#L6) run `npm run trpc-api-import`.
+Use:
+
+- npm link
+- run `npm run trpc-api-export` and push code changes. In your [frontend app](https://github.com/mkosir/trpc-fe-boilerplate/blob/main/package.json#L6) run `npm run trpc-api-import`.
 
 <!-- Badges -->
 
