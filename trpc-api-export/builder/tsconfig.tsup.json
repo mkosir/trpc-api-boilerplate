@@ -8,7 +8,6 @@
     "paths": {
       ".": ["."]
     },
-
     "allowJs": true,
     "strict": true,
     "strictNullChecks": true,
@@ -19,8 +18,7 @@
     "skipLibCheck": true,
     "esModuleInterop": true,
     "moduleResolution": "node",
-    "module": "commonjs",
-    "target": "ES2022"
+    "module": "commonjs"
   },
   "exclude": ["../../build", "../../node_modules"]
 }

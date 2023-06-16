@@ -6,7 +6,6 @@
     "paths": {
       ".": ["."]
     },
-
     "allowJs": true,
     "strict": true,
     "strictNullChecks": true,
