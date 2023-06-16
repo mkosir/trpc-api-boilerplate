@@ -19,8 +19,8 @@ _Easily set up a local development environment_
 
 - fork & clone repo
 - `npm install`
-- make changes to tRPC API & push
-- consume tRPC API [package](https://www.npmjs.com/package/trpc-api-boilerplate) with any frontend app 🚀
+- make changes to tRPC API & push - new [package](https://www.npmjs.com/package/trpc-api-boilerplate) is released 📦
+- `npm install trpc-api-boilerplate` in any frontend app 🚀
 
 ## Example Repo
 
