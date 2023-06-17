@@ -3,7 +3,7 @@
 [![CI][ci-badge]][ci-url]
 [![npm version][npm-badge]][npm-url]
 
-Minimal [tRPC](https://trpc.io/) API boilerplate. Easily build &amp; publish fully typesafe APIs that any frontend can consume.
+Minimal [tRPC](https://trpc.io/) API boilerplate for separate BE-FE repositories. Easily publish fully typesafe APIs that any frontend can consume.
 
 Monorepos are great, but sometimes we are targeting backend and frontend as separate (mono)repositories:
 
