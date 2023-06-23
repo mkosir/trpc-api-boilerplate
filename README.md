@@ -9,7 +9,7 @@ Monorepos are great, but sometimes we are targeting backend and frontend as sepa
 
 - separation/encapsulation of backend and frontend domain (except what must be exposed to both through API).
 - separation of backend and frontend developers (larger teams/companies).
-- separation of backend and frontend CI/CD pipelines.
+- separation of backend and frontend CI/CD pipelines, PRs, issues, etc.
 
 ... in that case checkout this boilerplate.
 
