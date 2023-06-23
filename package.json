@@ -22,7 +22,7 @@
     "semantic-release": "semantic-release --branches main"
   },
   "dependencies": {
-    "@trpc/server": "10.31.0",
+    "@trpc/server": "10.32.0",
     "cors": "2.8.5",
     "express": "4.18.2",
     "superjson": "1.12.3",
@@ -53,6 +53,6 @@
     "typescript": "5.1.3"
   },
   "engines": {
-    "node": ">=18.16.0"
+    "node": ">=18.16.1"
   }
 }
