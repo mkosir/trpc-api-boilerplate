@@ -31,7 +31,7 @@ Example frontend app repository - [tRPC Frontend Boilerplate](https://github.com
 If for whatever reason publishing a package is not an option:
 
 - privacy concerns
-- faster development iterations - skip CI (BE/FE monorepo look and feel)
+- faster development iterations - skip CI
 - ...
 
 Use:
