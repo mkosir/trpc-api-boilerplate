@@ -10,7 +10,6 @@ module.exports = {
   plugins: ['@typescript-eslint', 'import'],
 
   extends: [
-    'plugin:@typescript-eslint/recommended-type-checked',
     'plugin:@typescript-eslint/strict-type-checked',
     'plugin:@typescript-eslint/stylistic-type-checked',
     'prettier',
