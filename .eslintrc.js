@@ -3,15 +3,16 @@
 module.exports = {
   parser: '@typescript-eslint/parser',
   parserOptions: {
-    project: ['./tsconfig.json'],
+    project: true,
+    tsconfigRootDir: __dirname,
   },
 
   plugins: ['@typescript-eslint', 'import'],
 
   extends: [
-    'plugin:@typescript-eslint/recommended',
-    'plugin:@typescript-eslint/recommended-requiring-type-checking',
-    'plugin:@typescript-eslint/strict',
+    'plugin:@typescript-eslint/recommended-type-checked',
+    'plugin:@typescript-eslint/strict-type-checked',
+    'plugin:@typescript-eslint/stylistic-type-checked',
     'prettier',
     'plugin:prettier/recommended',
   ],
@@ -27,6 +28,7 @@ module.exports = {
     '@typescript-eslint/ban-types': 'error',
     '@typescript-eslint/prefer-nullish-coalescing': 'error',
     '@typescript-eslint/no-unnecessary-condition': 'error',
+    '@typescript-eslint/no-confusing-void-expression': ['error', { ignoreArrowShorthand: true }],
 
     'import/no-default-export': 'error',
     'import/order': [
