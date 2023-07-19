@@ -25,16 +25,16 @@
     "@trpc/server": "10.34.0",
     "cors": "2.8.5",
     "express": "4.18.2",
-    "superjson": "1.12.4",
+    "superjson": "1.13.1",
     "zod": "3.21.4"
   },
   "devDependencies": {
-    "@commitlint/cli": "17.6.6",
-    "@commitlint/config-conventional": "17.6.6",
+    "@commitlint/cli": "17.6.7",
+    "@commitlint/config-conventional": "17.6.7",
     "@types/cors": "2.8.13",
     "@types/express": "4.17.17",
-    "@typescript-eslint/eslint-plugin": "6.0.0",
-    "@typescript-eslint/parser": "6.0.0",
+    "@typescript-eslint/eslint-plugin": "6.1.0",
+    "@typescript-eslint/parser": "6.1.0",
     "eslint": "8.45.0",
     "eslint-config-prettier": "8.8.0",
     "eslint-import-resolver-typescript": "3.5.5",
@@ -52,6 +52,6 @@
     "typescript": "5.1.6"
   },
   "engines": {
-    "node": ">=18.16.1"
+    "node": ">=18.17.0"
   }
 }
