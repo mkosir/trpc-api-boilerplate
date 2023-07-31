@@ -36,8 +36,8 @@ If for whatever reason publishing a package is not an option:
 
 Use:
 
+- Run `npm run trpc-api-export` and push code changes. In your [frontend app](https://github.com/mkosir/trpc-fe-boilerplate/blob/main/package.json#L6) run `npm run trpc-api-import`.
 - npm link
-- run `npm run trpc-api-export` and push code changes. In your [frontend app](https://github.com/mkosir/trpc-fe-boilerplate/blob/main/package.json#L6) run `npm run trpc-api-import`.
 
 <!-- Badges -->
 
