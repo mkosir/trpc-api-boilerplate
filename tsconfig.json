@@ -17,7 +17,7 @@
     "skipLibCheck": true,
     "esModuleInterop": true,
     "moduleResolution": "node",
-    "module": "commonjs",
+    "module": "ES2022",
     "target": "ES2022"
   },
   "include": [".", ".eslintrc.cjs", ".commitlintrc.ts"],
