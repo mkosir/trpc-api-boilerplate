@@ -360,4 +360,4 @@ type Rectangle = {
 type Shape = Square | Rectangle;
 declare const SharedSquareObject: Shape;
 
-export { AppRouter, Shape, SharedSquareObject, USER_ROLES };
+export { type AppRouter, type Shape, SharedSquareObject, USER_ROLES };
