@@ -20,7 +20,7 @@
     "tsc": "tsc -p tsconfig.json",
     "format-lint": "prettier --config .prettierrc --check --ignore-unknown .",
     "format-fix": "prettier --config .prettierrc --write --ignore-unknown -l .",
-    "semantic-release": "semantic-reslease --branches main"
+    "semantic-release": "semantic-release --branches main"
   },
   "dependencies": {
     "@trpc/server": "10.44.1",
