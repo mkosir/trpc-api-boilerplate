@@ -20,6 +20,6 @@
     "module": "commonjs",
     "target": "ES2022"
   },
-  "include": [".", ".eslintrc.js", ".commitlintrc.ts"],
+  "include": [".", ".eslintrc.cjs", ".commitlintrc.ts"],
   "exclude": ["build", "node_modules"]
 }
