@@ -1,3 +1,4 @@
+export * from './getVersionInfo';
 export * from './mocks/mockBatches';
 export * from './mocks/mockUsers';
 export * from './sleep';
