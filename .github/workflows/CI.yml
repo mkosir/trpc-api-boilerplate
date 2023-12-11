@@ -5,6 +5,9 @@ on:
     branches:
       - main
 
+env:
+  FILE_PATH_VERSION_INFO: ./src/utils/version/VersionInfo.ts
+
 jobs:
   build:
     name: Build 🏗️
@@ -16,6 +19,18 @@ jobs:
 
       - name: Setup Node.js ⚙️ - Cache dependencies ⚡ - Install dependencies 🔧
         uses: ./.github/workflows/actions/setup_node-cache_dep-install_dep
+
+      - name: Version Info 💉
+        run: |
+          COMMIT=$GITHUB_SHA
+          BRANCH=${GITHUB_REF#refs/heads/}
+          TAG=''
+          if [[ ${{ github.ref_type }} == 'tag' ]]; then
+            TAG=${GITHUB_REF#refs/tags/}
+          fi
+          echo "write tag, branch & commit id to $FILE_PATH_VERSION_INFO"
+          echo "export const VersionInfo = { tag: '$TAG', branch: '$BRANCH', commit: '$COMMIT' };" > $FILE_PATH_VERSION_INFO
+          cat $FILE_PATH_VERSION_INFO
 
       - name: Build 🏗️
         run: npm run build

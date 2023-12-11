@@ -1,4 +1,4 @@
-import { getVersionInfo } from './getVersionInfo';
+import { getVersionInfo } from './version';
 
 export const homePage = `
 <!DOCTYPE html>
