@@ -9,7 +9,7 @@ export const homePage = `
   <body>
     <img src="https://raw.githubusercontent.com/mkosir/trpc-fe-boilerplate/main/misc/heisenberg.png" />
     <h3>tRPC API Boilerplate</h3>
-    <div style="color:gray; font-style: italic; font-size: 15px;">${getVersionInfo()}</div>
+    <div style="color:gray; font-style: italic; font-size: 15px; display: none;">${getVersionInfo()}</div>
     <br />
     <div style="color:black; font-style: italic; font-size: 18px;">
     Router:
