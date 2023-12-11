@@ -12,8 +12,9 @@
     "trpc-api-export": "tsup --config trpc-api-export/builder/tsup.config.ts && npm run format-fix",
     "prepare": "husky install",
     "build": "shx rm -rf build && tsc -p tsconfig.json",
-    "dev": "ts-node-dev -r tsconfig-paths/register src/index.ts",
-    "start": "NODE_PATH=./build/src node build/src/index.js",
+    "dev": "tsx src/index.ts",
+    "start": "tsx src/index.ts",
+    "start-esm": "NODE_PATH=./build/src node build/src/index.js",
     "lint": "eslint --max-warnings 0 .",
     "lint-fix": "eslint --fix .",
     "lint-staged-husky": "lint-staged",
@@ -46,10 +47,8 @@
     "prettier": "3.1.1",
     "semantic-release": "22.0.10",
     "shx": "0.3.4",
-    "ts-node": "10.9.2",
-    "ts-node-dev": "2.0.0",
-    "tsconfig-paths": "4.2.0",
     "tsup": "8.0.1",
+    "tsx": "4.6.2",
     "typescript": "5.3.3"
   },
   "engines": {
