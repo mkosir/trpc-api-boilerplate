@@ -7,7 +7,7 @@ Minimal [tRPC](https://trpc.io/) API boilerplate for separate BE-FE repositories
 
 Monorepos are great, but sometimes we are targeting backend and frontend as separate (mono)repositories:
 
-- separation/encapsulation of backend and frontend domain (except what must be exposed to both through API).
+- separation of backend and frontend domain (except what must be exposed to both through API).
 - separation of backend and frontend developers (larger teams/companies).
 - separation of backend and frontend CI/CD pipelines, PRs, issues, etc.
 
@@ -34,10 +34,8 @@ If for whatever reason publishing a package is not an option:
 - faster development iterations - skip CI
 - ...
 
-Use:
-
-- Run `npm run trpc-api-export` and push code changes. In your [frontend app](https://github.com/mkosir/trpc-fe-boilerplate/blob/main/package.json#L6) run `npm run trpc-api-import`.
-- npm link
+Use repository to share types by running `npm run trpc-api-export` and push code changes.  
+In your [frontend app](https://github.com/mkosir/trpc-fe-boilerplate/blob/main/package.json#L6) consume types by running `npm run trpc-api-import`.
 
 <!-- Badges -->
 
