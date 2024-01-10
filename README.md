@@ -1,7 +1,6 @@
 # tRPC API Boilerplate ![Heisenberg](https://raw.githubusercontent.com/mkosir/trpc-fe-boilerplate/main/misc/heisenberg_75.png)
 
 [![CI][ci-badge]][ci-url]
-[![npm version][npm-badge]][npm-url]
 
 Minimal [tRPC](https://trpc.io/) API boilerplate for separate BE-FE repositories. Easily publish fully typesafe APIs that any frontend can consume.
 
@@ -19,8 +18,8 @@ _Easily set up a local development environment_
 
 - fork & clone repo
 - `npm install`
-- make changes to tRPC API & push - new [package](https://www.npmjs.com/package/trpc-api-boilerplate) is released 📦
-- `npm install trpc-api-boilerplate` in any frontend app 🚀
+- make changes to tRPC API & push - new [package](https://www.npmjs.com/package/trpc-api-boilerplate) is released 📦 [![npm version][npm-badge]][npm-url]
+- install newely released package `npm install trpc-api-boilerplate` in any frontend app 🚀
 
 ## Example Repo
 
