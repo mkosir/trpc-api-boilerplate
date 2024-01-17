@@ -17,8 +17,8 @@
     "isolatedModules": true,
     "skipLibCheck": true,
     "esModuleInterop": true,
-    "module": "ESNext",
-    "moduleResolution": "Bundler",
+    "moduleResolution": "node",
+    "module": "ES2022",
     "target": "ES2022",
     "moduleDetection": "force"
   },
