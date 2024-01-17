@@ -21,6 +21,6 @@
     "target": "ES2022",
     "moduleDetection": "force",
   },
-  "include": [".", ".eslintrc.cjs", ".commitlintrc.ts"],
+  "include": [".", ".eslintrc.cjs", ".commitlintrc.cts"],
   "exclude": ["build", "node_modules"],
 }
