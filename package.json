@@ -5,6 +5,7 @@
   "main": "./trpc-api-export/dist/index.js",
   "exports": "./trpc-api-export/dist/index.js",
   "types": "./trpc-api-export/dist/index.d.ts",
+  "sideEffects": false,
   "files": [
     "trpc-api-export/dist",
     "README.md"
