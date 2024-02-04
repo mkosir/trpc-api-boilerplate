@@ -4,11 +4,13 @@
 
 Minimal [tRPC](https://trpc.io/) API boilerplate for separate BE-FE repositories. Easily publish fully typesafe APIs that any frontend can consume.
 
-Monorepos are great, but sometimes we are targeting backend and frontend as separate (mono)repositories:
+Monorepos are great, but sometimes we are targeting backend and frontend as separate (mono)repositories.
 
-- separation of backend and frontend domain (except what must be exposed to both through API).
-- separation of backend and frontend developers (larger teams/companies).
-- separation of backend and frontend CI/CD pipelines, PRs, issues, etc.
+We might aim for backend and frontend repositories separation of:
+
+- domain/business logic - expose only what need to be exposed through API.
+- developers - larger teams/companies.
+- CI/CD pipelines, PRs, issues, etc.
 
 ... in that case checkout this boilerplate.
 
