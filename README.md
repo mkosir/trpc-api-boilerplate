@@ -23,7 +23,10 @@ _Easily set up a local development environment_
 
 ## Example Repo
 
-Example frontend app repository - [tRPC Frontend Boilerplate](https://github.com/mkosir/trpc-fe-boilerplate)
+Example frontend app repositories:
+
+- [tRPC Frontend Boilerplate](https://github.com/mkosir/trpc-fe-boilerplate) - Vite
+- [tRPC Frontend Boilerplate](https://github.com/mkosir/trpc-fe-boilerplate) - Nextjs
 
 ### Avoid publishing package?
 
@@ -34,7 +37,7 @@ If for whatever reason publishing a package is not an option:
 - ...
 
 Use repository to share types by running `npm run trpc-api-export` and push code changes.  
-In your [frontend app](https://github.com/mkosir/trpc-fe-boilerplate/blob/main/package.json#L6) consume types by running `npm run trpc-api-import`.
+In your [frontend app](https://github.com/mkosir/trpc-fe-boilerplate-vite/blob/main/package.json#L7) consume types by running `npm run trpc-api-import`.
 
 <!-- Badges -->
 
