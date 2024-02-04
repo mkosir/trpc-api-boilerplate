@@ -4,7 +4,7 @@
     "outDir": "build",
     "baseUrl": "src",
     "paths": {
-      ".": ["."],
+      ".": ["."]
     },
     "allowJs": true,
     "strict": true,
@@ -19,8 +19,8 @@
     "module": "ESNext",
     "moduleResolution": "Bundler",
     "target": "ES2022",
-    "moduleDetection": "force",
+    "moduleDetection": "force"
   },
   "include": [".", ".eslintrc.cjs", ".commitlintrc.ts"],
-  "exclude": ["build", "node_modules"],
+  "exclude": ["build", "node_modules"]
 }
