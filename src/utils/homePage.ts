@@ -7,7 +7,7 @@ export const homePage = `
     <title>tRPC API Boilerplate</title>
   </head>
   <body>
-    <img src="https://raw.githubusercontent.com/mkosir/trpc-fe-boilerplate/main/misc/heisenberg.png" />
+    <img src="https://raw.githubusercontent.com/mkosir/trpc-fe-boilerplate-vite/main/misc/heisenberg.png" />
     <h3>tRPC API Boilerplate</h3>
     <div style="color:gray; font-style: italic; font-size: 15px; display: none;">${getVersionInfo()}</div>
     <br />

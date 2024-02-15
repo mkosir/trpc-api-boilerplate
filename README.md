@@ -1,4 +1,4 @@
-# tRPC API Boilerplate ![Heisenberg](https://raw.githubusercontent.com/mkosir/trpc-fe-boilerplate/main/misc/heisenberg_75.png)
+# tRPC API Boilerplate ![Heisenberg](https://raw.githubusercontent.com/mkosir/trpc-fe-boilerplate-vite/main/misc/heisenberg_75.png)
 
 [![CI][ci-badge]][ci-url]
 
@@ -27,8 +27,8 @@ _Easily set up a local development environment_
 
 Example frontend app repositories:
 
-- [tRPC Frontend Boilerplate](https://github.com/mkosir/trpc-fe-boilerplate) - Vite
-- [tRPC Frontend Boilerplate](https://github.com/mkosir/trpc-fe-boilerplate) - Nextjs
+- [tRPC Frontend Boilerplate](https://github.com/mkosir/trpc-fe-boilerplate-vite) - Vite
+- [tRPC Frontend Boilerplate](https://github.com/mkosir/trpc-fe-boilerplate-next) - Nextjs
 
 ### Avoid publishing package?
 
