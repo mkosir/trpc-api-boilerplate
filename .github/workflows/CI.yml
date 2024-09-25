@@ -99,3 +99,4 @@ jobs:
         with:
           url: ${{ secrets.RENDER_DEPLOY_HOOK }}
           method: 'GET'
+          timeout: 20000
