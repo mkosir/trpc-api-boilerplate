@@ -16,7 +16,7 @@
     "build": "shx rm -rf build && tsc -p tsconfig.json",
     "dev": "tsx watch src/index.ts",
     "start": "tsx src/index.ts",
-    "lint": "eslintS --report-unused-disable-directives --max-warnings 0 .",
+    "lint": "eslint --report-unused-disable-directives --max-warnings 0 .",
     "lint-fix": "eslint --fix .",
     "lint-staged-husky": "lint-staged",
     "tsc": "tsc -p tsconfig.json",
