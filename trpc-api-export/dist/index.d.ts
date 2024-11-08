@@ -4,8 +4,8 @@ import * as express from 'express';
 import * as qs from 'qs';
 import * as express_serve_static_core from 'express-serve-static-core';
 
-type DeepMutable<T> = {
-  -readonly [P in keyof T]: DeepMutable<T[P]>;
+type DeepMutable<TSourceType> = {
+  -readonly [P in keyof TSourceType]: DeepMutable<TSourceType[P]>;
 };
 
 declare const appRouter: _trpc_server.CreateRouterInner<

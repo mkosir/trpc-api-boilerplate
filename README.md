@@ -43,7 +43,7 @@ In your [frontend app](https://github.com/mkosir/trpc-fe-boilerplate-vite/blob/m
 
 <!-- Badges -->
 
-[ci-badge]: https://github.com/mkosir/trpc-api-boilerplate/actions/workflows/CI.yml/badge.svg
-[ci-url]: https://github.com/mkosir/trpc-api-boilerplate/actions/workflows/CI.yml
+[ci-badge]: https://github.com/mkosir/trpc-api-boilerplate/actions/workflows/main.yml/badge.svg
+[ci-url]: https://github.com/mkosir/trpc-api-boilerplate/actions/workflows/main.yml
 [npm-url]: https://www.npmjs.com/package/trpc-api-boilerplate
 [npm-badge]: https://img.shields.io/npm/v/trpc-api-boilerplate.svg

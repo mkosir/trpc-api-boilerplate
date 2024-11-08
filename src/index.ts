@@ -19,6 +19,7 @@ app.use(
   }),
 );
 
+// @ts-expect-error Upgrade express to v5
 app.use('/', (_req, res) => {
   return res.type('html').send(homePage);
 });

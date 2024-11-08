@@ -6,7 +6,7 @@ const tsupConfig = defineConfig({
   format: ['esm'],
   clean: true,
   dts: true,
-  tsconfig: 'trpc-api-export/builder/tsconfig.tsup.json',
+  tsconfig: 'trpc-api-export/builder/tsconfig.build.json',
 });
 
 // eslint-disable-next-line

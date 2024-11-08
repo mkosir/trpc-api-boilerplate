@@ -22,37 +22,39 @@
     "tsc": "tsc -p tsconfig.json",
     "format-lint": "prettier --config .prettierrc --check --ignore-unknown .",
     "format-fix": "prettier --config .prettierrc --write --ignore-unknown -l .",
-    "semantic-release": "semantic-release --branches main"
+    "release": "semantic-release --branches main"
   },
   "dependencies": {
     "@trpc/server": "10.45.2",
     "cors": "2.8.5",
-    "express": "4.21.0",
+    "express": "4.21.1",
     "superjson": "2.2.1",
     "zod": "3.23.8"
   },
   "devDependencies": {
     "@commitlint/cli": "19.5.0",
     "@commitlint/config-conventional": "19.5.0",
+    "@eslint/js": "9.14.0",
     "@types/cors": "2.8.17",
-    "@types/express": "4.17.21",
-    "@typescript-eslint/eslint-plugin": "7.8.0",
-    "@typescript-eslint/parser": "7.8.0",
-    "eslint": "8.57.0",
+    "@types/eslint": "9.6.1",
+    "@types/express": "5.0.0",
+    "eslint": "9.14.0",
     "eslint-config-prettier": "9.1.0",
     "eslint-import-resolver-typescript": "3.6.3",
-    "eslint-plugin-import": "2.30.0",
+    "eslint-plugin-import": "2.31.0",
     "eslint-plugin-prettier": "5.2.1",
+    "eslint-plugin-react": "7.37.2",
     "husky": "9.1.6",
     "lint-staged": "15.2.10",
     "prettier": "3.3.3",
-    "semantic-release": "24.1.1",
+    "semantic-release": "24.2.0",
     "shx": "0.3.4",
-    "tsup": "8.3.0",
-    "tsx": "4.19.1",
-    "typescript": "5.6.2"
+    "tsup": "8.3.5",
+    "tsx": "4.19.2",
+    "typescript": "5.6.3",
+    "typescript-eslint": "8.13.0"
   },
   "engines": {
-    "node": ">=20.17.0"
+    "node": ">=22.10.0"
   }
 }
