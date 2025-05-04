@@ -25,7 +25,7 @@
     "release": "semantic-release --branches main"
   },
   "dependencies": {
-    "@trpc/server": "10.45.2",
+    "@trpc/server": "11.1.2",
     "cors": "2.8.5",
     "express": "5.1.0",
     "superjson": "2.2.2",

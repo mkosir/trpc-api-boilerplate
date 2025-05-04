@@ -1,70 +1,29 @@
-import * as superjson from 'superjson';
 import * as _trpc_server from '@trpc/server';
-import * as express from 'express';
-import * as qs from 'qs';
-import * as express_serve_static_core from 'express-serve-static-core';
+import * as _trpc_server_unstable_core_do_not_import from '@trpc/server/unstable-core-do-not-import';
 
 type DeepMutable<TSourceType> = {
   -readonly [P in keyof TSourceType]: DeepMutable<TSourceType[P]>;
 };
 
-declare const appRouter: _trpc_server.CreateRouterInner<
-  _trpc_server.RootConfig<{
-    ctx: {
-      req: express.Request<express_serve_static_core.ParamsDictionary, any, any, qs.ParsedQs, Record<string, any>>;
-      res: express.Response<any, Record<string, any>>;
-    };
-    meta: object;
-    errorShape: _trpc_server.DefaultErrorShape;
-    transformer: typeof superjson.default;
-  }>,
+declare const appRouter: _trpc_server_unstable_core_do_not_import.BuiltRouter<
   {
-    batch: _trpc_server.CreateRouterInner<
-      _trpc_server.RootConfig<{
-        ctx: {
-          req: express.Request<express_serve_static_core.ParamsDictionary, any, any, qs.ParsedQs, Record<string, any>>;
-          res: express.Response<any, Record<string, any>>;
-        };
-        meta: object;
-        errorShape: _trpc_server.DefaultErrorShape;
-        transformer: typeof superjson.default;
-      }>,
+    ctx: object;
+    meta: object;
+    errorShape: _trpc_server_unstable_core_do_not_import.DefaultErrorShape;
+    transformer: true;
+  },
+  _trpc_server_unstable_core_do_not_import.DecorateCreateRouterOptions<{
+    batch: _trpc_server_unstable_core_do_not_import.BuiltRouter<
       {
-        list: _trpc_server.BuildProcedure<
-          'query',
-          {
-            _config: _trpc_server.RootConfig<{
-              ctx: {
-                req: express.Request<
-                  express_serve_static_core.ParamsDictionary,
-                  any,
-                  any,
-                  qs.ParsedQs,
-                  Record<string, any>
-                >;
-                res: express.Response<any, Record<string, any>>;
-              };
-              meta: object;
-              errorShape: _trpc_server.DefaultErrorShape;
-              transformer: typeof superjson.default;
-            }>;
-            _ctx_out: {
-              req: express.Request<
-                express_serve_static_core.ParamsDictionary,
-                any,
-                any,
-                qs.ParsedQs,
-                Record<string, any>
-              >;
-              res: express.Response<any, Record<string, any>>;
-            };
-            _input_in: typeof _trpc_server.unsetMarker;
-            _input_out: typeof _trpc_server.unsetMarker;
-            _output_in: typeof _trpc_server.unsetMarker;
-            _output_out: typeof _trpc_server.unsetMarker;
-            _meta: object;
-          },
-          DeepMutable<{
+        ctx: object;
+        meta: object;
+        errorShape: _trpc_server_unstable_core_do_not_import.DefaultErrorShape;
+        transformer: true;
+      },
+      _trpc_server_unstable_core_do_not_import.DecorateCreateRouterOptions<{
+        list: _trpc_server.TRPCQueryProcedure<{
+          input: void;
+          output: DeepMutable<{
             id: string;
             title: string;
             description: string | null;
@@ -83,266 +42,91 @@ declare const appRouter: _trpc_server.CreateRouterInner<
               name: string;
               description: string | null;
             } | null;
-          }>[]
-        >;
-      }
+          }>[];
+        }>;
+      }>
     >;
-    user: _trpc_server.CreateRouterInner<
-      _trpc_server.RootConfig<{
-        ctx: {
-          req: express.Request<express_serve_static_core.ParamsDictionary, any, any, qs.ParsedQs, Record<string, any>>;
-          res: express.Response<any, Record<string, any>>;
-        };
-        meta: object;
-        errorShape: _trpc_server.DefaultErrorShape;
-        transformer: typeof superjson.default;
-      }>,
+    user: _trpc_server_unstable_core_do_not_import.BuiltRouter<
       {
-        list: _trpc_server.BuildProcedure<
-          'query',
-          {
-            _config: _trpc_server.RootConfig<{
-              ctx: {
-                req: express.Request<
-                  express_serve_static_core.ParamsDictionary,
-                  any,
-                  any,
-                  qs.ParsedQs,
-                  Record<string, any>
-                >;
-                res: express.Response<any, Record<string, any>>;
-              };
-              meta: object;
-              errorShape: _trpc_server.DefaultErrorShape;
-              transformer: typeof superjson.default;
-            }>;
-            _ctx_out: {
-              req: express.Request<
-                express_serve_static_core.ParamsDictionary,
-                any,
-                any,
-                qs.ParsedQs,
-                Record<string, any>
-              >;
-              res: express.Response<any, Record<string, any>>;
-            };
-            _input_in: typeof _trpc_server.unsetMarker;
-            _input_out: typeof _trpc_server.unsetMarker;
-            _output_in: typeof _trpc_server.unsetMarker;
-            _output_out: typeof _trpc_server.unsetMarker;
-            _meta: object;
-          },
-          DeepMutable<{
+        ctx: object;
+        meta: object;
+        errorShape: _trpc_server_unstable_core_do_not_import.DefaultErrorShape;
+        transformer: true;
+      },
+      _trpc_server_unstable_core_do_not_import.DecorateCreateRouterOptions<{
+        list: _trpc_server.TRPCQueryProcedure<{
+          input: void;
+          output: DeepMutable<{
             id: string;
             email: string;
             name: string;
             username: string;
             role: 'administrator' | 'apprentice' | 'standard';
             imageUrl?: string | undefined;
-          }>[]
-        >;
-        show: _trpc_server.BuildProcedure<
-          'query',
-          {
-            _config: _trpc_server.RootConfig<{
-              ctx: {
-                req: express.Request<
-                  express_serve_static_core.ParamsDictionary,
-                  any,
-                  any,
-                  qs.ParsedQs,
-                  Record<string, any>
-                >;
-                res: express.Response<any, Record<string, any>>;
-              };
-              meta: object;
-              errorShape: _trpc_server.DefaultErrorShape;
-              transformer: typeof superjson.default;
-            }>;
-            _meta: object;
-            _ctx_out: {
-              req: express.Request<
-                express_serve_static_core.ParamsDictionary,
-                any,
-                any,
-                qs.ParsedQs,
-                Record<string, any>
-              >;
-              res: express.Response<any, Record<string, any>>;
-            };
-            _input_in: string;
-            _input_out: string;
-            _output_in: typeof _trpc_server.unsetMarker;
-            _output_out: typeof _trpc_server.unsetMarker;
-          },
-          | DeepMutable<{
-              id: string;
+          }>[];
+        }>;
+        show: _trpc_server.TRPCQueryProcedure<{
+          input: string;
+          output:
+            | DeepMutable<{
+                id: string;
+                email: string;
+                name: string;
+                username: string;
+                role: 'administrator' | 'apprentice' | 'standard';
+                imageUrl?: string | undefined;
+              }>
+            | `User with id:${string} does not exist in database.`;
+        }>;
+        destroy: _trpc_server.TRPCMutationProcedure<{
+          input: {
+            id: string;
+          };
+          output: DeepMutable<{
+            id: string;
+            email: string;
+            name: string;
+            username: string;
+            role: 'administrator' | 'apprentice' | 'standard';
+            imageUrl?: string | undefined;
+          }>[];
+        }>;
+        create: _trpc_server.TRPCMutationProcedure<{
+          input: {
+            user: {
               email: string;
               name: string;
               username: string;
               role: 'administrator' | 'apprentice' | 'standard';
               imageUrl?: string | undefined;
-            }>
-          | `User with id:${string} does not exist in database.`
-        >;
-        destroy: _trpc_server.BuildProcedure<
-          'mutation',
-          {
-            _config: _trpc_server.RootConfig<{
-              ctx: {
-                req: express.Request<
-                  express_serve_static_core.ParamsDictionary,
-                  any,
-                  any,
-                  qs.ParsedQs,
-                  Record<string, any>
-                >;
-                res: express.Response<any, Record<string, any>>;
-              };
-              meta: object;
-              errorShape: _trpc_server.DefaultErrorShape;
-              transformer: typeof superjson.default;
-            }>;
-            _meta: object;
-            _ctx_out: {
-              req: express.Request<
-                express_serve_static_core.ParamsDictionary,
-                any,
-                any,
-                qs.ParsedQs,
-                Record<string, any>
-              >;
-              res: express.Response<any, Record<string, any>>;
             };
-            _input_in: {
-              id: string;
-            };
-            _input_out: {
-              id: string;
-            };
-            _output_in: typeof _trpc_server.unsetMarker;
-            _output_out: typeof _trpc_server.unsetMarker;
-          },
-          DeepMutable<{
+          };
+          output: {
             id: string;
             email: string;
             name: string;
             username: string;
             role: 'administrator' | 'apprentice' | 'standard';
             imageUrl?: string | undefined;
-          }>[]
-        >;
-        create: _trpc_server.BuildProcedure<
-          'mutation',
-          {
-            _config: _trpc_server.RootConfig<{
-              ctx: {
-                req: express.Request<
-                  express_serve_static_core.ParamsDictionary,
-                  any,
-                  any,
-                  qs.ParsedQs,
-                  Record<string, any>
-                >;
-                res: express.Response<any, Record<string, any>>;
-              };
-              meta: object;
-              errorShape: _trpc_server.DefaultErrorShape;
-              transformer: typeof superjson.default;
-            }>;
-            _meta: object;
-            _ctx_out: {
-              req: express.Request<
-                express_serve_static_core.ParamsDictionary,
-                any,
-                any,
-                qs.ParsedQs,
-                Record<string, any>
-              >;
-              res: express.Response<any, Record<string, any>>;
-            };
-            _input_in: {
-              user: {
-                email: string;
-                name: string;
-                username: string;
-                role: 'administrator' | 'apprentice' | 'standard';
-                imageUrl?: string | undefined;
-              };
-            };
-            _input_out: {
-              user: {
-                email: string;
-                name: string;
-                username: string;
-                role: 'administrator' | 'apprentice' | 'standard';
-                imageUrl?: string | undefined;
-              };
-            };
-            _output_in: typeof _trpc_server.unsetMarker;
-            _output_out: typeof _trpc_server.unsetMarker;
-          },
-          {
-            id: string;
-            email: string;
-            name: string;
-            username: string;
-            role: 'administrator' | 'apprentice' | 'standard';
-            imageUrl?: string | undefined;
-          }
-        >;
-      }
+          };
+        }>;
+      }>
     >;
-    util: _trpc_server.CreateRouterInner<
-      _trpc_server.RootConfig<{
-        ctx: {
-          req: express.Request<express_serve_static_core.ParamsDictionary, any, any, qs.ParsedQs, Record<string, any>>;
-          res: express.Response<any, Record<string, any>>;
-        };
-        meta: object;
-        errorShape: _trpc_server.DefaultErrorShape;
-        transformer: typeof superjson.default;
-      }>,
+    util: _trpc_server_unstable_core_do_not_import.BuiltRouter<
       {
-        seedDb: _trpc_server.BuildProcedure<
-          'mutation',
-          {
-            _config: _trpc_server.RootConfig<{
-              ctx: {
-                req: express.Request<
-                  express_serve_static_core.ParamsDictionary,
-                  any,
-                  any,
-                  qs.ParsedQs,
-                  Record<string, any>
-                >;
-                res: express.Response<any, Record<string, any>>;
-              };
-              meta: object;
-              errorShape: _trpc_server.DefaultErrorShape;
-              transformer: typeof superjson.default;
-            }>;
-            _ctx_out: {
-              req: express.Request<
-                express_serve_static_core.ParamsDictionary,
-                any,
-                any,
-                qs.ParsedQs,
-                Record<string, any>
-              >;
-              res: express.Response<any, Record<string, any>>;
-            };
-            _input_in: typeof _trpc_server.unsetMarker;
-            _input_out: typeof _trpc_server.unsetMarker;
-            _output_in: typeof _trpc_server.unsetMarker;
-            _output_out: typeof _trpc_server.unsetMarker;
-            _meta: object;
-          },
-          'Database initialized successfully.'
-        >;
-      }
+        ctx: object;
+        meta: object;
+        errorShape: _trpc_server_unstable_core_do_not_import.DefaultErrorShape;
+        transformer: true;
+      },
+      _trpc_server_unstable_core_do_not_import.DecorateCreateRouterOptions<{
+        seedDb: _trpc_server.TRPCMutationProcedure<{
+          input: void;
+          output: 'Database initialized successfully.';
+        }>;
+      }>
     >;
-  }
+  }>
 >;
 type AppRouter = typeof appRouter;
 

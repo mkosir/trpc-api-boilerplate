@@ -24,12 +24,26 @@ export const homePage = `
       <ul>
         Util
         <li>
-          <form method="post" action="/trpc/util.seedDb">
-            <button type="submit" title="Mutation - /trpc/util.seedDb">Seed DB</button>
-          </form>
+          <button id="seedDbButton" title="Mutation - /trpc/util.seedDb">Seed DB</button>
+          <span id="seedDbLabel" style="display:none; margin-left:10px;">✅ DB seeded</span>
         </li>
       </ul>
     </div>
+    <script>
+      const button = document.getElementById('seedDbButton');
+      const label = document.getElementById('seedDbLabel');
+      button.addEventListener('click', () => {
+        fetch('/trpc/util.seedDb', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({})
+        });
+        label.style.display = 'inline';
+        setTimeout(() => {
+          label.style.display = 'none';
+        }, 2000);
+      });
+    </script>
   </body>
 </html>
 `;
