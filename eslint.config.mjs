@@ -2,7 +2,6 @@ import eslint from '@eslint/js';
 import eslintConfigPrettier from 'eslint-config-prettier';
 import eslintPluginImport from 'eslint-plugin-import';
 import eslintPluginPrettierRecommended from 'eslint-plugin-prettier/recommended';
-import eslintPluginReact from 'eslint-plugin-react';
 import tseslint from 'typescript-eslint';
 
 export default tseslint.config(
@@ -11,9 +10,7 @@ export default tseslint.config(
   eslintPluginImport.flatConfigs.recommended,
   ...tseslint.configs.strictTypeChecked,
   ...tseslint.configs.stylisticTypeChecked,
-  eslintPluginReact.configs.flat.recommended,
   eslintPluginPrettierRecommended,
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
   eslintConfigPrettier,
   {
     ignores: ['!.*', 'node_modules', 'dist', 'trpc-api-export/dist', 'compiled', 'build'],
@@ -30,15 +27,12 @@ export default tseslint.config(
       'import/resolver': {
         typescript: { project: 'tsconfig.json' },
       },
-      react: { version: 'detect' },
     },
   },
   {
     files: ['**/*.{js,ts,tsx}'],
 
     rules: {
-      'react/jsx-sort-props': ['error', { callbacksLast: true, shorthandFirst: true }],
-
       'prefer-template': 'error',
       'no-nested-ternary': 'error',
       'no-unneeded-ternary': 'error',
