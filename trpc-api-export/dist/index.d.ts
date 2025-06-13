@@ -1,26 +1,25 @@
 import * as _trpc_server from '@trpc/server';
-import * as _trpc_server_unstable_core_do_not_import from '@trpc/server/unstable-core-do-not-import';
 
 type DeepMutable<TSourceType> = {
   -readonly [P in keyof TSourceType]: DeepMutable<TSourceType[P]>;
 };
 
-declare const appRouter: _trpc_server_unstable_core_do_not_import.BuiltRouter<
+declare const appRouter: _trpc_server.TRPCBuiltRouter<
   {
     ctx: object;
     meta: object;
-    errorShape: _trpc_server_unstable_core_do_not_import.DefaultErrorShape;
+    errorShape: _trpc_server.TRPCDefaultErrorShape;
     transformer: true;
   },
-  _trpc_server_unstable_core_do_not_import.DecorateCreateRouterOptions<{
-    batch: _trpc_server_unstable_core_do_not_import.BuiltRouter<
+  _trpc_server.TRPCDecorateCreateRouterOptions<{
+    batch: _trpc_server.TRPCBuiltRouter<
       {
         ctx: object;
         meta: object;
-        errorShape: _trpc_server_unstable_core_do_not_import.DefaultErrorShape;
+        errorShape: _trpc_server.TRPCDefaultErrorShape;
         transformer: true;
       },
-      _trpc_server_unstable_core_do_not_import.DecorateCreateRouterOptions<{
+      _trpc_server.TRPCDecorateCreateRouterOptions<{
         list: _trpc_server.TRPCQueryProcedure<{
           input: void;
           output: DeepMutable<{
@@ -43,17 +42,18 @@ declare const appRouter: _trpc_server_unstable_core_do_not_import.BuiltRouter<
               description: string | null;
             } | null;
           }>[];
+          meta: object;
         }>;
       }>
     >;
-    user: _trpc_server_unstable_core_do_not_import.BuiltRouter<
+    user: _trpc_server.TRPCBuiltRouter<
       {
         ctx: object;
         meta: object;
-        errorShape: _trpc_server_unstable_core_do_not_import.DefaultErrorShape;
+        errorShape: _trpc_server.TRPCDefaultErrorShape;
         transformer: true;
       },
-      _trpc_server_unstable_core_do_not_import.DecorateCreateRouterOptions<{
+      _trpc_server.TRPCDecorateCreateRouterOptions<{
         list: _trpc_server.TRPCQueryProcedure<{
           input: void;
           output: DeepMutable<{
@@ -64,6 +64,7 @@ declare const appRouter: _trpc_server_unstable_core_do_not_import.BuiltRouter<
             role: 'administrator' | 'apprentice' | 'standard';
             imageUrl?: string | undefined;
           }>[];
+          meta: object;
         }>;
         show: _trpc_server.TRPCQueryProcedure<{
           input: string;
@@ -77,6 +78,7 @@ declare const appRouter: _trpc_server_unstable_core_do_not_import.BuiltRouter<
                 imageUrl?: string | undefined;
               }>
             | `User with id:${string} does not exist in database.`;
+          meta: object;
         }>;
         destroy: _trpc_server.TRPCMutationProcedure<{
           input: {
@@ -90,6 +92,7 @@ declare const appRouter: _trpc_server_unstable_core_do_not_import.BuiltRouter<
             role: 'administrator' | 'apprentice' | 'standard';
             imageUrl?: string | undefined;
           }>[];
+          meta: object;
         }>;
         create: _trpc_server.TRPCMutationProcedure<{
           input: {
@@ -109,20 +112,22 @@ declare const appRouter: _trpc_server_unstable_core_do_not_import.BuiltRouter<
             role: 'administrator' | 'apprentice' | 'standard';
             imageUrl?: string | undefined;
           };
+          meta: object;
         }>;
       }>
     >;
-    util: _trpc_server_unstable_core_do_not_import.BuiltRouter<
+    util: _trpc_server.TRPCBuiltRouter<
       {
         ctx: object;
         meta: object;
-        errorShape: _trpc_server_unstable_core_do_not_import.DefaultErrorShape;
+        errorShape: _trpc_server.TRPCDefaultErrorShape;
         transformer: true;
       },
-      _trpc_server_unstable_core_do_not_import.DecorateCreateRouterOptions<{
+      _trpc_server.TRPCDecorateCreateRouterOptions<{
         seedDb: _trpc_server.TRPCMutationProcedure<{
           input: void;
           output: 'Database initialized successfully.';
+          meta: object;
         }>;
       }>
     >;

@@ -25,32 +25,32 @@
     "release": "semantic-release --branches main"
   },
   "dependencies": {
-    "@trpc/server": "11.1.2",
+    "@trpc/server": "11.4.1",
     "cors": "2.8.5",
     "express": "5.1.0",
     "superjson": "2.2.2",
-    "zod": "3.24.3"
+    "zod": "3.25.64"
   },
   "devDependencies": {
-    "@commitlint/cli": "19.8.0",
-    "@commitlint/config-conventional": "19.8.0",
-    "@eslint/js": "9.26.0",
-    "@types/cors": "2.8.17",
+    "@commitlint/cli": "19.8.1",
+    "@commitlint/config-conventional": "19.8.1",
+    "@eslint/js": "9.28.0",
+    "@types/cors": "2.8.19",
     "@types/eslint": "9.6.1",
-    "@types/express": "5.0.1",
-    "eslint": "9.26.0",
-    "eslint-config-prettier": "10.1.2",
-    "eslint-import-resolver-typescript": "4.3.4",
+    "@types/express": "5.0.3",
+    "eslint": "9.28.0",
+    "eslint-config-prettier": "10.1.5",
+    "eslint-import-resolver-typescript": "4.4.3",
     "eslint-plugin-import": "2.31.0",
-    "eslint-plugin-prettier": "5.3.1",
+    "eslint-plugin-prettier": "5.4.1",
     "husky": "9.1.7",
-    "lint-staged": "15.5.1",
+    "lint-staged": "16.1.0",
     "prettier": "3.5.3",
-    "semantic-release": "24.2.3",
-    "tsup": "8.4.0",
-    "tsx": "4.19.4",
+    "semantic-release": "24.2.5",
+    "tsup": "8.5.0",
+    "tsx": "4.20.3",
     "typescript": "5.8.3",
-    "typescript-eslint": "8.31.1"
+    "typescript-eslint": "8.34.0"
   },
   "engines": {
     "node": ">=22.15.0"
