@@ -2,26 +2,27 @@
 
 [![CI][ci-badge]][ci-url]
 
-Minimal [tRPC](https://trpc.io/) API boilerplate for separate backend and frontend repositories. Easily publish fully typesafe APIs that any frontend can consume.
+Minimal [tRPC](https://trpc.io/) API boilerplate for projects with separate backend and frontend repositories. Easily publish fully typesafe APIs that any frontend can consume.
 
-Monorepos are great, but sometimes we are targeting backend and frontend as separate (mono)repositories.
+Monorepos are great, but sometimes the architecture requires separating the backend and frontend into distinct repositories.
 
-We might aim for backend and frontend repositories separation of:
+### Why use this?
 
-- domain/business logic - expose only what need to be exposed through API.
-- developers - larger teams/companies.
-- CI/CD pipelines, PRs, issues, etc.
+This boilerplate is ideal when you want to separate:
 
-... in that case checkout this boilerplate.
+- **Domain/business logic** – expose only what needs to be exposed through the API.
+- **Developer responsibilities** – for larger teams/companies.
+- **CI/CD pipelines** – manage PRs, issues, and deployments independently.
 
 ## Running
 
 _Easily set up a local development environment_
 
-- fork & clone repo
-- `npm install`
-- make changes to tRPC API & push - new [package](https://www.npmjs.com/package/trpc-api-boilerplate) is released 📦 [![npm version][npm-badge]][npm-url]
-- install newly released package `npm install trpc-api-boilerplate` in any frontend app 🚀
+- Fork & clone the repo
+- Run `npm install`
+- Make changes to the tRPC API
+- Push - a new [package](https://www.npmjs.com/package/trpc-api-boilerplate) is released 📦 [![npm version][npm-badge]][npm-url]
+- In your frontend app, install it `npm install trpc-api-boilerplate`
 
 ## Example Repo
 
