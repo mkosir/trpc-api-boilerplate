@@ -24,14 +24,14 @@ _Easily set up a local development environment_
 - Push - a new [package](https://www.npmjs.com/package/trpc-api-boilerplate) is released 📦 [![npm version][npm-badge]][npm-url]
 - In your frontend app, install it `npm install trpc-api-boilerplate`
 
-## Example Repo
+## Example Repos
 
 Example frontend app repositories:
 
 - [tRPC Frontend Boilerplate](https://github.com/mkosir/trpc-fe-boilerplate-vite) - Vite
-- [tRPC Frontend Boilerplate](https://github.com/mkosir/trpc-fe-boilerplate-next) - Nextjs
+- [tRPC Frontend Boilerplate](https://github.com/mkosir/trpc-fe-boilerplate-next) - Next.js
 
-### Avoid publishing package?
+### Avoid publishing the package?
 
 If for whatever reason publishing a package is not an option:
 
@@ -39,8 +39,8 @@ If for whatever reason publishing a package is not an option:
 - faster development iterations - skip CI
 - ...
 
-Use repository to share types by running `npm run trpc-api-export` and push code changes.  
-In your [frontend app](https://github.com/mkosir/trpc-fe-boilerplate-vite/blob/main/package.json#L7) consume types by running `npm run trpc-api-import`.
+Use the repository to share types by running `npm run trpc-api-export` and push code changes.  
+In your [frontend app](https://github.com/mkosir/trpc-fe-boilerplate-vite/blob/main/package.json#L7), consume types by running `npm run trpc-api-import`.
 
 <!-- Badges -->
 
