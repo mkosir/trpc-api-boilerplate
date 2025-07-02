@@ -1,15 +1,15 @@
-name: 'setup_node-cache_dep-install_dep'
-description: 'Setup Node.js ⚙️ - Cache dependencies ⚡ - Install dependencies 🔧'
+name: 'setup_node_npm'
+description: 'Setup Node/npm ⚙️'
 
 runs:
   using: 'composite'
   steps:
-    - name: Setup Node.js ⚙️ & Cache dependencies ⚡
+    - name: Setup Node.js & Cache dependencies
       uses: actions/setup-node@v4
       with:
-        node-version: '22.x'
+        node-version: '24.x'
         cache: 'npm'
 
-    - name: Install dependencies 🔧
+    - name: Install dependencies
       shell: bash
       run: npm ci
