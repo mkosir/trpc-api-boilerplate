@@ -1,12 +1,14 @@
 import eslint from '@eslint/js';
 import eslintConfigPrettier from 'eslint-config-prettier';
-import eslintPluginImport from 'eslint-plugin-import';
+import { createTypeScriptImportResolver } from 'eslint-import-resolver-typescript';
+import * as eslintPluginImportX from 'eslint-plugin-import-x';
 import eslintPluginPrettierRecommended from 'eslint-plugin-prettier/recommended';
-import tseslint from 'typescript-eslint';
+import * as tseslint from 'typescript-eslint';
 
 export default tseslint.config(
   eslint.configs.recommended,
-  eslintPluginImport.flatConfigs.recommended,
+  eslintPluginImportX.flatConfigs.recommended,
+  eslintPluginImportX.flatConfigs.typescript,
   ...tseslint.configs.strictTypeChecked,
   ...tseslint.configs.stylisticTypeChecked,
   eslintPluginPrettierRecommended,
@@ -23,9 +25,8 @@ export default tseslint.config(
       },
     },
     settings: {
-      'import/resolver': {
-        typescript: { project: 'tsconfig.json' },
-      },
+      'import-x/resolver-next': [createTypeScriptImportResolver()],
+      react: { version: 'detect' },
     },
   },
   {
